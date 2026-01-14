@@ -1,22 +1,22 @@
-import pymongo
-
-# Tu diccionario original de juegos, cuentas y passwords
-WEBSITES = {
+{
     "ORION STARS": {
         "url": "https://orionstars.vip:8781/default.aspx",
         "accounts": [
-            {"usuario": "LupesweepsOS", "password": '!@PEus4321'},
-            {"usuario": "Wisegangautostore", "password": "Auto1989!@"},
-            {"usuario": "AmandaP_BOT", "password": "Focus999@@159"},
-            {"usuario": "slapitgames3", "password": "Sl4piTG@m3z!"},
-            {"usuario": "kobegames3", "password": "OaKcR3ekD4ve!!"},
-            {"usuario": "Whatever777", "password": "Mkingdom77@@"},
-            {"usuario": "OceanSluggerz01_Cashier", "password": "Focus987@#6152"},
-            {"usuario": "LuckyCas", "password": "Lucky9709@!$"},
-            {"usuario": "a5games3", "password": "haileysPh656!@"},
-            {"usuario": "ReggiesProducts_Cashier", "password": "Monchie21Monchie21!!"},
-            {"usuario": "CashierTDCRB1", "password": 'DVASBFU!"182571982152'},
-            {"usuario": "CashierTAPEC_1", "password": "TAPsdpTDC_62!"},
+            {"usuario": "LupesweepsOS", "password": '!@PEus4321'}, #PPP
+            {"usuario": "Wisegangautostore", "password": "Auto1989!@"}, #WG
+            {"usuario": "AmandaP_BOT", "password": "Focus999@@159"}, #BW
+            # {"usuario": "slapitgames3", "password": "Sl4piTG@m3z!"}, #SI
+            # {"usuario": "kobegames3", "password": "OaKcR3ekD4ve!!"}, #OC
+            {"usuario": "Whatever777", "password": "Mkingdom77@@"},#MK
+            {"usuario": "OceanSluggerz01_Cashier", "password": "Focus987@#6152"},#OS
+            {"usuario": "LuckyCas", "password": "Lucky9709@!$"}, #LR
+            # {"usuario": "a5games3", "password": "haileysPh656!@"}, #HG
+            {"usuario": "ReggiesProducts_Cashier", "password": "Monchie21Monchie21!!"}, #PC
+            {"usuario": "CashierTDCRB1", "password": 'DVASBFU!"182571982152'}, #EP
+            {"usuario": "CashierTAPEC_1", "password": "TAPsdpTDC_62!"}, #TA
+            {"usuario": "TokenT26", "password": "Resetme1234!!"}, #TT
+            {"usuario": "Pandagod26", "password": 'PMAdmin567!"'}, #PG
+            {"usuario": "Wysaro26", "password": "Auto1989!@2025"}, #WY
         ],
     },
     "JUWA": {
@@ -25,14 +25,17 @@ WEBSITES = {
             {"usuario": "PeruLogin", "password": "newone123"},
             {"usuario": "autostore", "password": "Auto1989!@"},
             {"usuario": "AmandaP_BOT", "password": "Focus999@@159"},
-            {"usuario": "slapitgames", "password": "Sl4piTG@m3z"},
-            {"usuario": "kcheung", "password": "OaKcR3ekD4v!"},
+            # {"usuario": "slapitgames", "password": "Sl4piTG@m3z"},
+            # {"usuario": "kcheung", "password": "OaKcR3ekD4v!"},
             {"usuario": "Whatever777", "password": "Mkingdom7"},
             {"usuario": "OceanSluggerz01_Cashier", "password": "Focus987@#6152"},
             {"usuario": "iluckyroomjw", "password": "Juwa$777"},
-            {"usuario": "a5games", "password": "HaiLey8888"},
+            # {"usuario": "a5games", "password": "HaiLey8888"},
             {"usuario": "JWStoreDistro", "password": "JWStoreDistro123!#$"},
             {"usuario": "TAPJuwaMewa6131", "password": "JurTapMyTap!875"},
+            {"usuario": "tokenT26", "password": "Resetme1234"},
+            {"usuario": "Pandagod26", "password": 'PMAdmin567!"'},
+            {"usuario": "Wysaro26", "password": "Auto1989"},
         ],
     },
     "FIRE KIRIN": {
@@ -41,15 +44,18 @@ WEBSITES = {
             {"usuario": "VasquezCash", "password": "!@PEus4321"},
             {"usuario": "Wisegangautostore", "password": "Auto1989"},
             {"usuario": "AmandaP_BOT", "password": "Focus999159"},
-            {"usuario": "slapitgames", "password": "Sl4piTG@m3z!"},
-            {"usuario": "kobe", "password": "OaKcR3ekD4ve!!"},
+            # {"usuario": "slapitgames", "password": "Sl4piTG@m3z!"},
+            # {"usuario": "kobe", "password": "OaKcR3ekD4ve!!"},
             {"usuario": "whatever", "password": "Mkingdom7@@"},
             {"usuario": "OceanSluggerz01_Cashier", "password": "Focus987_6152"},
             {"usuario": " IluckyroomFK", "password": "k3wMBwN6"},
-            {"usuario": "a5games", "password": "!Hailey_8800_!"},
+            # {"usuario": "a5games", "password": "!Hailey_8800_!"},
             {"usuario": "ReggiesProducts_Cashier", "password": "Winning6543"},
             {"usuario": "CashierTDCRB1", "password": "DVASBFU_81236871250"},
             {"usuario": "TAPTS_CSH_1", "password": "fkes1dragon"},
+            {"usuario": "TokenT26", "password": "Resetme1234"},
+            {"usuario": "Pandagod26", "password": 'PMAdmin567!"'},
+            {"usuario": "Wysaro26", "password": "Auto1989"},
         ],
     },
     "PANDA MASTER": {
@@ -58,14 +64,17 @@ WEBSITES = {
             {"usuario": "LVasquezPMc", "password": "Free123!@#"},
             {"usuario": "Wisegangautostore", "password": "Auto1989"},
             {"usuario": "AmandaP_BOT", "password": "Focus999159"},
-            {"usuario": "slapitgames", "password": "Sl4piTG@m3z!"},
-            {"usuario": "kobe", "password": "OaKcR3ekD4ve!!"},
+            # {"usuario": "slapitgames", "password": "Sl4piTG@m3z!"},
+            # {"usuario": "kobe", "password": "OaKcR3ekD4ve!!"},
             {"usuario": "whatever", "password": "Mkingdom7@@"},
             {"usuario": "OceanSluggerz001_Cashier", "password": "Focus987_6152"},
-            {"usuario": "a5games", "password": "!Hailey_8800_!"},
+            # {"usuario": "a5games", "password": "!Hailey_8800_!"},
             {"usuario": "ReggiesProducts_Cashier", "password": "Winning4276"},
             {"usuario": "CashierTDCRB1", "password": "192371_pm_DVASBFU"},
             {"usuario": "TdcTaPm_Cash1", "password": "TaptapcashPM_127"},
+            {"usuario": "TokenT26", "password": "Resetme1234"},
+            {"usuario": "Pandagod", "password": 'PMAdmin567!"'},
+            {"usuario": "Wysaro26", "password": "Auto1989"},
         ],
     },
     "MILKY WAY": {
@@ -76,6 +85,7 @@ WEBSITES = {
             {"usuario": "bworldweb007", "password": "Agent38"},
             {"usuario": "OceanSluggerz01_Cashier", "password": "Focus987_6152"},
             {"usuario": "MWTapCash", "password": "BashCraqZs_2"},
+            {"usuario": "Pandagod26", "password": 'PMAdmin567!"'},
         ],
     },
     "VBLINK": {
@@ -84,8 +94,8 @@ WEBSITES = {
             {"usuario": "atencionpre1", "password": "PPPE@$123456"},
             {"usuario": "Autostore", "password": "Auto1989!@"},
             {"usuario": "WebsiteCashier", "password": "Winning@7777"},
-            {"usuario": "slapitnow", "password": "$l@p$l@p8#8"},
-            {"usuario": "playoakcreek", "password": "0aKcR33kpL@y!"},
+            # {"usuario": "slapitnow", "password": "$l@p$l@p8#8"},
+            # {"usuario": "playoakcreek", "password": "0aKcR33kpL@y!"},
             {"usuario": "Whatever777", "password": "Mkingdom777@"},
             {"usuario": "OceanSluggerz01B", "password": "Focus987@#6152"},
             {"usuario": "Cashilucky", "password": "v53FMZcg$123"},
@@ -93,6 +103,9 @@ WEBSITES = {
             {"usuario": "playerbot", "password": "TIme2plan!$"},
             {"usuario": "DisTDCroVB15163", "password": "TDCvbCPRV!61365"},
             {"usuario": "VtapBLINK182CASH", "password": "TapTopVbSAC11!"},
+            {"usuario": "TokenT26", "password": "Resetme1234$"},
+            {"usuario": "Pandagod26", "password": "PMAdmin567!@"},
+            {"usuario": "Wysaro26", "password": "Wysar0G41!5a"},
         ],
     },
     "ULTRA PANDA": {
@@ -101,15 +114,18 @@ WEBSITES = {
             {"usuario": "atencionpre", "password": "PPPE@$123456"},
             {"usuario": "Automatedside", "password": "Auto1989!@"},
             {"usuario": "WebsiteBOT", "password": "Winning@7777"},
-            {"usuario": "slapitnow", "password": "$l@p$l@p8#8"},
-            {"usuario": "playoakcreek", "password": "0aKcR33kpL@y!"},
+            # {"usuario": "slapitnow", "password": "$l@p$l@p8#8"},
+            # {"usuario": "playoakcreek", "password": "0aKcR33kpL@y!"},
             {"usuario": "Whatever777", "password": "Mkingdom777@"},
             {"usuario": "OceanSluggerz01B", "password": "Focus987@#6152"},
             {"usuario": "CashiluckyR", "password": "UltraPanda$1$1"},
-            {"usuario": "HaileyBE", "password": "Haileys8825!@"},
+            # {"usuario": "HaileyBE", "password": "Haileys8825!@"},
             {"usuario": "playerbot", "password": "TIme2plan!$"},
             {"usuario": "UPTDCSUB19751", "password": "tudpc182351soobs"},
             {"usuario": "TAuPSub1LPMP", "password": "Tap@TappinUP44!"},
+            {"usuario": "TokenT26", "password": "Resetme1234$"},
+            {"usuario": "Pandagod26", "password": "PMAdmin567!@"},
+            {"usuario": "Wysaro26", "password": "Wysar0G41!5"},
         ],
     },
     "GOLDEN TREASURE": {
@@ -122,6 +138,9 @@ WEBSITES = {
             {"usuario": "playerbot", "password": "TIme2plan!$"},
             {"usuario": "GTDCCSUB35857", "password": "gtdcsub835gt2"},
             {"usuario": "TapDBGTSub123", "password": "PanPass91!67"},
+            {"usuario": "TokenT26", "password": "Resetme1234$"},
+            {"usuario": "Pandagod26", "password": "PMAdmin567!@"},
+            {"usuario": "Wysaro26", "password": "Wysar0G41!"},
         ],
     },
     "Egames": {
@@ -133,6 +152,9 @@ WEBSITES = {
             {"usuario": "ReggiesProducts1", "password": "Monchie21!"},
             {"usuario": "DisTDCroVB15163", "password": "EGTDCroVB15164"},
             {"usuario": "TAPEGGsBOT0", "password": "BreakfastBun234!"},
+            {"usuario": "TokenT26", "password": "Resetme1234$"},
+            {"usuario": "Pandagod", "password": "PMAdmin567!@"},
+            {"usuario": "Wysaro26", "password": "Wysar0G4m1!"},
         ],
     },
     "ACE BOOK": {
@@ -143,6 +165,8 @@ WEBSITES = {
             {"usuario": "playerbot", "password": "TIme2plan!$"},
             {"usuario": "ABTDCDistro", "password": "ABCDEFDis2025!"},
             {"usuario": "ACNOABtap175", "password": "Baltapz!!4ev4"},
+            {"usuario": "Pandagod26", "password": "PMAdmin567!@"},
+            {"usuario": "Wysaro26", "password": "Wysar0G4!"},
         ],
     },
     "GAME VAULT": {
@@ -151,14 +175,17 @@ WEBSITES = {
             {"usuario": "perubot", "password": "Lima123!@#"},
             {"usuario": "Autostore", "password": "Auto1989!@#"},
             {"usuario": "AmandaP_BOT", "password": "Focus999@@159"},
-            {"usuario": "slapitgames", "password": "Sl4piTG@m3z"},
-            {"usuario": "kcheung", "password": "OaKcR3ekD4v!"},
+            # {"usuario": "slapitgames", "password": "Sl4piTG@m3z"},
+            # {"usuario": "kcheung", "password": "OaKcR3ekD4v!"},
             {"usuario": "whatever", "password": "Mkingdom7"},
             {"usuario": "iluckyroomGV", "password": "fP95yrWM"},
-            {"usuario": "a5games", "password": "reseT99_!"},
+            # {"usuario": "a5games", "password": "reseT99_!"},
             {"usuario": "ReggiesProducts01", "password": "Winning2563"},
             {"usuario": "GVStoreDistro", "password": "!GVStoreDistros125$#1"},
             {"usuario": "GVotDTapBno1", "password": "GVPSWFJQM1!&613"},
+            {"usuario": "TokenT26", "password": "Resetme1234!"},
+            {"usuario": "Pandagod26", "password": "Money1234!"},
+            {"usuario": "Wysaro26", "password": "Auto1989!@"},
         ],
     },
     "HIGHSTAKES": {
@@ -180,10 +207,10 @@ WEBSITES = {
         "accounts": [
             {"usuario": "Autostore", "password": "Auto1989!@"},
             {"usuario": "WebBOT", "password": "Ballerz777$"},
-            {"usuario": "slapitgames", "password": "Sl4piTG@m3z"},
-            {"usuario": "kobecheung", "password": "OaKcR3ekD4v!"},
+            # {"usuario": "slapitgames", "password": "Sl4piTG@m3z"},
+            # {"usuario": "kobecheung", "password": "OaKcR3ekD4v!"},
             {"usuario": "MKingdomGRO", "password": "Mushking123@"},
-            {"usuario": "a5games", "password": "H4!leys8888"},
+            # {"usuario": "a5games", "password": "H4!leys8888"},
         ],
     },
     "CASH MACHINE": {
@@ -191,9 +218,9 @@ WEBSITES = {
         "accounts": [
             {"usuario": "Autostore", "password": "Auto1989!@"},
             {"usuario": "WebCashier", "password": "Ballerz777!"},
-            {"usuario": "slapit", "password": "Sl4piTG@m3z"},
-            {"usuario": "kobe", "password": "OaKcR3ekD4v!"},
-            {"usuario": "a5games", "password": "H4!leys8888"},
+            # {"usuario": "slapit", "password": "Sl4piTG@m3z"},
+            # {"usuario": "kobe", "password": "OaKcR3ekD4v!"},
+            # {"usuario": "a5games", "password": "H4!leys8888"},
             {"usuario": "CashCaxaTap", "password": "CaxTap$123!3"},
         ],
     },
@@ -201,9 +228,9 @@ WEBSITES = {
         "url": "https://agent.lasvegassweeps.com/login",
         "accounts": [
             {"usuario": "autostore", "password": "Auto1989!@"},
-            {"usuario": "slapitgames", "password": "Sl4piTG@m3z"},
-            {"usuario": "kobe", "password": "OaKcR3ekD4v!"},
-            {"usuario": "a5games", "password": "HaiLey8888"},
+            # {"usuario": "slapitgames", "password": "Sl4piTG@m3z"},
+            # {"usuario": "kobe", "password": "OaKcR3ekD4v!"},
+            # {"usuario": "a5games", "password": "HaiLey8888"},
         ],
     },
     "MAFIA": {
@@ -211,8 +238,8 @@ WEBSITES = {
         "accounts": [
             {"usuario": "Autostore", "password": "Auto1989!@"},
             {"usuario": "WebCashier", "password": "Ballerz777!"},
-            {"usuario": "kobe", "password": "OaKcR3ekD4v!"},
-            {"usuario": "a5games", "password": "H4!leys8888"},
+            # {"usuario": "kobe", "password": "OaKcR3ekD4v!"},
+            # {"usuario": "a5games", "password": "H4!leys8888"},
             {"usuario": "MafCashq112", "password": "C4shM4f6598*"},
         ],
     },
@@ -221,9 +248,9 @@ WEBSITES = {
         "accounts": [
             {"usuario": "Autostore", "password": "Auto1989!@"},
             {"usuario": "WebCashier", "password": "Ballerz777!"},
-            {"usuario": "slapitgames", "password": "Sl4piTG@m3z"},
-            {"usuario": "kobe", "password": "OaKcR3ekD4v!"},
-            {"usuario": "a5games", "password": "H4!leys8888"},
+            # {"usuario": "slapitgames", "password": "Sl4piTG@m3z"},
+            # {"usuario": "kobe", "password": "OaKcR3ekD4v!"},
+            # {"usuario": "a5games", "password": "H4!leys8888"},
             {"usuario": "TapDsCash13r", "password": "NotC13rtzx!"},
         ],
     },
@@ -232,8 +259,8 @@ WEBSITES = {
         "accounts": [
             {"usuario": "Autostore", "password": "Auto1989"},
             {"usuario": "WebBOT", "password": "Winning777"},
-            {"usuario": "kobe", "password": "OaKcR3ekD4v"},
-            {"usuario": "A5games", "password": "HaiLey8888"},
+            # {"usuario": "kobe", "password": "OaKcR3ekD4v"},
+            # {"usuario": "A5games", "password": "HaiLey8888"},
             {"usuario": "TapWinCash", "password": "Tap3WinCa3b2"},
         ],
     },
@@ -249,9 +276,9 @@ WEBSITES = {
         "accounts": [
             {"usuario": "Autostore", "password": "Auto1989!@"},
             {"usuario": "WebBOT", "password": "Ballerz777$"},
-            {"usuario": "slapitgames", "password": "Sl4piTG@m3z"},
-            {"usuario": "oakcreek", "password": "OaKcR3ekD4v!"},
-            {"usuario": "haileygames", "password": "H4!leys8888"},
+            # {"usuario": "slapitgames", "password": "Sl4piTG@m3z"},
+            # {"usuario": "oakcreek", "password": "OaKcR3ekD4v!"},
+            # {"usuario": "haileygames", "password": "H4!leys8888"},
             {"usuario": "TapLuckyCash", "password": "TapDi3sCas!"},
         ],
     },
@@ -260,20 +287,20 @@ WEBSITES = {
         "accounts": [
             {"usuario": "WisegangAuto", "password": "Auto1989!@"},
             {"usuario": "bworldweb007", "password": "Agent38"},
-            {"usuario": "slapgames", "password": "Sl4piTG@m3z!"},
-            {"usuario": "oakcreek", "password": "OaKcR3ekD4v!"},
+            # {"usuario": "slapgames", "password": "Sl4piTG@m3z!"},
+            # {"usuario": "oakcreek", "password": "OaKcR3ekD4v!"},
             {"usuario": "iluckyroomVX", "password": "pjDTF4p7"},
-            {"usuario": "haileygame", "password": "hailey23!"},
+            # {"usuario": "haileygame", "password": "hailey23!"},
         ],
     },
     "MEGA SPIN": {
         "url": "https://megaspinpay.com/",
         "accounts": [
             {"usuario": "Wisegang26amu", "password": "Auto1989!@"},
-            {"usuario": "slapitgames", "password": "Sl4piTG@m3z!"},
-            {"usuario": "kobe", "password": "OaKcR3ekD4ve!!"},
+            # {"usuario": "slapitgames", "password": "Sl4piTG@m3z!"},
+            # {"usuario": "kobe", "password": "OaKcR3ekD4ve!!"},
             {"usuario": "whatever", "password": "Mkingdom7@@"},
-            {"usuario": "a5games", "password": "hailey8800"},
+            # {"usuario": "a5games", "password": "hailey8800"},
         ],
     },
     "River Sweeps": {
@@ -285,6 +312,9 @@ WEBSITES = {
             # {"usuario": "ReggiesProducts", "password": "Winning2"},
             {"usuario": "RVTDCDistro", "password": "RVTDCDishggsdjt5azys123!#"},
             {"usuario": "CASHriverTAPsweeps1", "password": "DTTG+Riv12456"},
+            {"usuario": "TokenT26", "password": "Resetme1234"},
+            {"usuario": "Pandagod26", "password": 'PMAdmin567!"'},
+            {"usuario": "Wysaro26", "password": "Auto1989"},
         ],
     },
     "100 PLUS": {
@@ -356,8 +386,8 @@ WEBSITES = {
         "url": "http://agentserver.slots88888.com:8003/admin/login",
         "accounts": [
             {"usuario": "Autostore", "password": "Auto1989!@"},
-            {"usuario": "oakcreek", "password": "gAmES4Uo@K"},
-            {"usuario": "a5games", "password": "H4!leys8888"},
+            # {"usuario": "oakcreek", "password": "gAmES4Uo@K"},
+            # {"usuario": "a5games", "password": "H4!leys8888"},
         ],
     },
     "KRAKEN": {
@@ -399,8 +429,8 @@ WEBSITES = {
     "SUPER DRAGON": {
         "url": "https://dailyug.com/gmpc/login",
         "accounts": [
-            {"usuario": "oakcreek", "password": "OaKcR3ekD4ve"},
-            {"usuario": "hailey", "password": "HaiLey8888"},
+            # {"usuario": "oakcreek", "password": "OaKcR3ekD4ve"},
+            # {"usuario": "hailey", "password": "HaiLey8888"},
         ],
     },
     "VEGAS ROLL": {
@@ -436,412 +466,4 @@ WEBSITES = {
             {"usuario": "Autostoree2026", "password": "Auto1989!"},
         ]
     }
-    # Agrega más juegos aquí...
 }
-
-# Grupos definidos con sus compañías
-GRUPOS_COMPANIAS = {
-    "Tierlock": [
-        "The Fun Room", "Slots Gone Wild", "JJsreelsadventures", "Lucky Luxe", "Snarcade", "Lucky Buddy", "Devine Slots", "BordersWay", "Pandagod", "The Players Lounge",
-    ],
-    "TAP": [
-        "JLEnt"
-    ],
-    "PPP": [
-        "Play Play Play", "Lucky Lady", "The Cash Cove"
-    ],
-    "Wise Gang": [
-        "Wise Gang", "Token Tiger", "Innercore Games", "Fast Fortunes"
-    ],
-    "Ballerz": [
-        "Ballerz World of Gamez"
-    ],
-    "Slap It": [
-        "Slap It"
-    ],
-    "Oak Creek": [
-        "Play OakCreek"
-    ],
-    "Slap It y Oak Creek": [
-        "Slap It", "Play OakCreek"
-    ],
-    "Mushroom Kingdom": [
-        "Mushroom Kingdom"
-    ],
-    "Ocean Sluggerz": [
-        "Ocean Sluggerz"
-    ],
-    "Lucky Room": [
-        "Lucky Room"
-    ],
-    "Hailey Games": [
-        "Hailey Games"
-    ],
-    "Players Club": [
-        "The Players Club"
-    ]
-
-}
-
-# Asignación de grupo por usuario
-USERS_GRUPOS = {
-
-    # Orion Stars
-    "LupesweepsOS": "PPP",
-    "Wisegangautostore": "Wise Gang",
-    "AmandaP_BOT": "Ballerz",
-    "slapitgames3": "Slap It",
-    "kobegames3": "Oak Creek",
-    "MKingdomOS": "Mushroom Kingdom",
-    "OceanSluggerz01_Cashier": "Ocean Sluggerz",
-    "LuckyCas": "Lucky Room",
-    "a5games3": "Hailey Games",
-    "ReggiesProducts_Cashier": "Players Club",
-    "CashierTDCRB1": "Tierlock",
-    "CashierTAPEC_1": "TAP",
-
-    # Fire Kirin
-    "VasquezCash": "PPP",
-    "Wisegangautostore": "Wise Gang",
-    "AmandaP_BOT": "Ballerz",
-    "slapitgames": "Slap It",
-    "kobe": "Oak Creek",
-    "whatever": "Mushroom Kingdom",
-    "OceanSluggerz01_Cashier": "Ocean Sluggerz",
-    "IluckyroomFK": "Lucky Room",
-    "a5games": "Hailey Games",
-    "ReggiesProducts_Cashier": "Players Club",
-    "CashierTDCRB1": "Tierlock",
-    "TAPTS_CSH_1": "TAP",
-
-    # Panda Master
-    "LVasquezPMc": "PPP",
-    "Wisegangautostore": "Wise Gang",
-    "AmandaP_BOT": "Ballerz",
-    "slapitgames": "Slap It",
-    "kobe": "Oak Creek",
-    "whatever": "Mushroom Kingdom",
-    "OceanSluggerz001_Cashier": "Ocean Sluggerz",
-    "a5games": "Hailey Games",
-    "ReggiesProducts_Cashier": "Players Club",
-    "CashierTDCRB1": "Tierlock",
-    "TdcTaPm_Cash1": "TAP",
-
-    # Milky Way
-    "CashierLV": "PPP",
-    "Autostore": "Wise Gang",
-    "bworldweb007": "Ballerz",
-    "OceanSluggerz01_Cashier": "Ocean Sluggerz",
-    "MWTapCash": "TAP",
-
-    # Vblink
-    "Atencionpre1": "PPP",
-    "Autostore": "Wise Gang",
-    "WebsiteCashier": "Ballerz",
-    "slapitnow": "Slap It",
-    "playoakcreek": "Oak Creek",
-    "Whatever777": "Mushroom Kingdom",
-    "OceanSluggerz01B": "Ocean Sluggerz",
-    "Cashilucky": "Lucky Room",
-    "HaileyBE": "Hailey Games",
-    "playerbot": "Players Club",
-    "DisTDCroVB15163": "Tierlock",
-    "VtapBLINK182CASH": "TAP",
-
-    # Ultra Panda
-    "Atencionpre": "PPP",
-    "Automatedside": "Wise Gang",
-    "WebsiteBOT": "Ballerz",
-    "slapitnow": "Slap It",
-    "playoakcreek": "Oak Creek",
-    "Whatever777": "Mushroom Kingdom",
-    "OceanSluggerz01B": "Ocean Sluggerz",
-    "CashiluckyR": "Lucky Room",
-    "HaileyBE": "Hailey Games",
-    "playerbot": "Players Club",
-    "UPTDCSUB19751": "Tierlock",
-    "TAuPSub1LPMP": "TAP",
-
-    # Golden Treasure
-    "Perubot": "PPP",
-    "Autostore1": "Wise Gang",
-    "AmandasPBOT": "Ballerz",
-    "iluckyCash": "Lucky Room",
-    "playerbot": "Players Club",
-    "GTDCCSUB35857": "Tierlock",
-    "TapDBGTSub123": "TAP",
-
-    # Egame
-    "Perubot": "PPP",
-    "Autostore": "Wise Gang",
-    "BallerzWebBOT": "Ballerz",
-    "ReggiesProducts1": "Players Club",
-    "DisTDCroVB15163": "Tierlock",
-    "TAPEGGsBOT0": "TAP",
-
-    # Ace Book
-    "Wisegangauto": "Wise Gang",
-    "AmandasPBOT": "Ballerz",
-    "playerbot": "Players Club",
-    "ABTDCDistro": "Tierlock",
-    "ACNOABtap175": "TAP",
-
-    # Juwa
-    "PeruLogin": "PPP",
-    "autostore": "Wise Gang",
-    "AmandaP_BOT": "Ballerz",
-    "slapitgames": "Slap It",
-    "kcheung": "Oak Creek",
-    "Whatever777": "Mushroom Kingdom",
-    "OceanSluggerz01_Cashier": "Ocean Sluggerz",
-    "iluckyroomjw": "Lucky Room",
-    "a5games": "Hailey games",
-    "JWStoreDistro": "Tierlock",
-    "TAPJuwaMewa6131": "TAP",
-
-    # Game Vault
-    "perubot": "PPP",
-    "Autostore": "Wise Gang",
-    "AmandaP_BOT": "Ballerz",
-    "slapitgames": "Slap It",
-    "kcheung": "Oak Creek",
-    "whatever": "Mushroom Kingdom",
-    "iluckyroomGV": "Lucky Room",
-    "a5games": "Hailey Games",
-    "ReggiesProducts01": "Players Club",
-    "GVStoreDistro": "Tierlock",
-    "GVotDTapBno1": "TAP",
-
-    # Highstakes
-    "Autostore": "Wise Gang",
-
-    # Galaxy World
-    "automated": "Wise Gang",
-    "bworldweb007": "Ballerz",
-    "ReggiesProducts01": "Players Club",
-
-    # Gameroom
-    "Autostore": "Wise Gang",
-    "WebBOT": "Ballerz",
-    "slapitgames": "Slap It",
-    "kobecheung": "Oak Creek",
-    "MKingdomGRO": "Mushroom Kingdom",
-    "a5games": "Hailey Games",
-
-    # Cash Machine
-    "Autostore": "Wise Gang",
-    "WebCashier": "Ballerz",
-    "slapit": "Slap It",
-    "kobe": "Oak Creek",
-    "a5games": "Hailey",
-    "CashCaxaTap": "TAP",
-
-    # Vegas Sweeps
-    "autostore": "Wise Gang",
-    "slapitgames": "Slap It",
-    "kobe": "Oak Creek",
-    "a5games": "Hailey Games",
-
-    # Mafia
-    "Autostore": "Wise Gang",
-    "WebCashier": "Ballerz",
-    "kobe": "Oak Creek",
-    "a5games": "Hailey Games",
-    "MafCashq112": "TAP",
-
-    # Noble
-    "Autostore": "Wise Gang",
-    "WebCashier": "Ballerz",
-    "slapitgames": "Slap It",
-    "kobe": "Oak Creek",
-    "a5games": "Hailey Games",
-    "TapDsCash13r": "TAP",
-
-    # Winstar
-    "Autostore": "Wise Gang",
-    "WebBOT": "Ballerz",
-    "kobe": "Oak Creek",
-    "A5games": "Hailey Games",
-    "TapWinCash": "TAP",
-
-    # Mr All in One
-    "Autostore": "Wise Gang",
-    "TAPMRCashier": "TAP",
-
-    # Lucky Stars
-    "Autostore": "Wise Gang",
-    "WebBOT": "Ballerz",
-    "slapitgames": "Slap It",
-    "oakcreek": "Oak Creek",
-    "haileygames": "Hailey Games",
-    "TapLuckyCash": "TAP",
-
-    # Vegas X
-    "Autostore1": "Wise Gang",
-    "bworldweb007": "Ballerz",
-    "slapgames": "Slap It",
-    "oakcreek": "Oak Creek",
-    "iluckyroomVX": "Lucky Room",
-    "haileygame": "Hailey Games",
-
-    # Mega Spin
-    "Wisegang26amu": "Wise Gang",
-    # "slapitgames": "Slap It",
-    "kobe": "Oak Creek",
-    "whatever": "Mushroom Kingdom",
-    "a5games": "Hailey Games",
-
-    # Riversweeps
-    "Autostore": "Wise Gang",
-    "OceanSluggerz01_Bot": "Ocean Sluggerz",
-    "iLuckyRS_CashLuckyR": "Lucky Room",
-    "ReggiesProducts": "Players Club",
-    "RVTDCDistro": "Tierlock",
-    "CASHriverTAPsweeps1": "TAP",
-
-    # 100 Plus
-    "USNBGamesBot001": "Wise Gang",
-
-    # Cash Frenzy
-    "Autostore": "Wise Gang",
-    "whatever": "Mushroom Kingdom",
-    "CFTaCaSt0": "TAP",
-
-    # Blue Dragon
-    "Autostore": "Wise Gang",
-    "ReggiesProducts": "Players Club",
-
-    # Easy Street
-    "Autostore": "Wise Gang",
-
-    # Fish Glory
-    "Autostore": "Wise Gang",
-
-    # Gemini
-    "NBGamesBot": "Wise Gang",
-    "ReggiesProducts": "Players Club",
-
-    # Glamour Spin
-    "Autostore": "Wise Gang",
-
-    # Highroller
-    "NEWBGamesBot": "Wise Gang",
-
-    # Jackpot Frenzy
-    "Crystal": "Wise Gang",
-
-    # Joker
-    "Autostore": "Wise Gang",
-    "Jok3rCashQ": "TAP",
-
-    # King of Pop
-    "Autostore": "Wise Gang",
-    "oakcreek": "Oak Creek",
-    "a5games": "Hailey Games",
-
-    # Kraken
-    "Autostore": "Wise Gang",
-
-    # Legend Fire
-    "Autostore": "Wise Gang",
-
-    # Loot
-    "NEWBGamesC": "Wise Gang",
-
-    # Moolah
-    "Autostore": "Wise Gang",
-
-    # River Monster
-    "NEWBGamesC": "Wise Gang",
-
-    # Sirius
-    "NEWBGamesCashier": "Wise Gang",
-
-    # Super Dragon
-    "oakcreek": "Oak Creek",
-    "hailey": "Hailey Games",
-
-    # Vegas Roll
-    "Autostore": "Wise Gang",
-    "TapStoas689": "TAP",
-
-    # Winners Club
-    "Autostore": "Wise Gang",
-
-    # Yolo
-    "Autostore1": "Wise Gang",
-    "ReggiesProducts01": "Players Club",
-
-    # Black Mamba
-    "Wisegangauto": "Wise Gang",
-
-    # Lucky Paradise
-    "Autostore": "Wise Gang",
-    "playerstore1": "Players Club"
-
-}
-
-CAPTCHA_GRUPOS = {
-    "grupo1": [
-        "ORION STARS",
-        "FIRE KIRIN",
-        "PANDA MASTER",
-        "MILKY WAY",
-        "MOOLAH",
-        "RIVER MONSTER",
-        "KRAKEN",
-    ],
-    "grupo2": [
-        "CASH FRENZY",
-        "CASH MACHINE",
-        "GAME ROOM",
-        "JOKER",
-        "LUCKY STARS",
-        "MAFIA",
-        "Mr. All In One",
-        "NOBLE",
-        "VEGAS ROLL",
-        "WINNERS CLUB",
-        "Win Star",
-    ],
-    "grupo3": [
-        # "GALAXY WORLD",
-        "GAME VAULT",
-        "HIGHSTAKES",
-        "JUWA",
-        "LOOT",
-        "LUCKY PARADISE",
-        "SIRIUS",
-        "VEGAS SWEEPS",
-    ]
-}
-
-
-
-
-
-bulk_docs = []
-
-for website, info in WEBSITES.items():
-    for acc in info["accounts"]:
-        username = acc["usuario"]
-        compania = USERS_GRUPOS.get(username, None)
-        bulk_docs.append({
-            "website": website,
-            "username": username,
-            "password": acc["password"],
-            "grupo": compania
-        })
-
-# ✅ SOLO ejecutar cuando se corre directamente, NO al importar
-if __name__ == "__main__":
-    client = pymongo.MongoClient("mongodb+srv://kam_db_user:VJbs7fgYKJokO9pz@cluster0.e8doyfk.mongodb.net/?appName=Cluster0")
-    db = client["plataforma_finanzas"]
-    collection = db["cuentas_companias"]
-    
-    # Opcional: borrar duplicados antes de insertar
-    print("Limpiando duplicados existentes...")
-    collection.delete_many({})  # O usa el script de mongosh que te di
-    
-    collection.insert_many(bulk_docs)
-    print(f"✓ Insertados {len(bulk_docs)} documentos en cuentas_companias")

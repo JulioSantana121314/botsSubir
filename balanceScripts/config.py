@@ -16,7 +16,9 @@ import numpy as np
 import re
 import time
 from datetime import datetime
+from pathlib import Path
 import inspect
+import sys
 
 load_dotenv()
 
@@ -62,6 +64,7 @@ for folder in [LOG_FOLDER, CAPTCHA_FOLDER, EVIDENCE_FOLDER]:
 
 
 #### === Importa tu mapping de grupos === ####
+sys.path.insert(0, str(Path(__file__).parent.parent))
 from diccionario import WEBSITES, USERS_GRUPOS, CAPTCHA_GRUPOS
 
 
