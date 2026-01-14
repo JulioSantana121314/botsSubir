@@ -1,0 +1,11 @@
+# Matar todos los procesos de CMD
+taskkill /F /IM cmd.exe
+
+# Matar todos los procesos de Python
+taskkill /F /IM python.exe
+
+# Matar todos los procesos de PowerShell (excepto el actual)
+Get-Process powershell | Where-Object {$_.Id -ne $PID} | Stop-Process -Force
+
+# Matar procesos de Chrome en modo Headless
+Get-CimInstance Win32_Process -Filter "Name = 'chrome.exe' AND CommandLine LIKE '%--headless%'" | ForEach-Object {Stop-Process $_.ProcessId -Force}

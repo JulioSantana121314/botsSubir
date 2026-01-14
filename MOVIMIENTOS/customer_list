@@ -1,0 +1,222 @@
+import csv
+import argparse
+import logging
+import requests
+from datetime import datetime
+from config import companies, SUPERADMIN_USER, SUPERADMIN_PASS
+
+BASE_URL = "https://api.backend.biz"
+TIMEZONE = "America/Lima"
+PAGE_SIZE = 200
+DEFAULT_COMPANY = "BitVegas"
+
+
+def setup_logging(debug: bool):
+    level = logging.DEBUG if debug else logging.INFO
+    ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+    log_file = f"customer_export_{ts}.log"
+
+    logging.basicConfig(
+        level=level,
+        format="%(asctime)s %(levelname)s %(message)s",
+        handlers=[logging.FileHandler(log_file, encoding="utf-8"), logging.StreamHandler()],
+    )
+    logging.info("Logging iniciado. Archivo: %s", log_file)
+
+
+def safe_json(resp: requests.Response):
+    try:
+        return resp.json()
+    except Exception:
+        return None
+
+
+def request_with_debug(method: str, url: str, *, headers=None, params=None, json=None, timeout=60):
+    logging.debug("HTTP %s %s", method, url)
+    if params:
+        logging.debug("Params: %s", params)
+    if json is not None:
+        logging.debug("JSON body: %s", json)
+
+    resp = requests.request(method, url, headers=headers, params=params, json=json, timeout=timeout)
+
+    logging.debug("Status: %s %s", resp.status_code, resp.reason)
+    logging.debug("Final URL: %s", resp.url)
+
+    if resp.status_code >= 400:
+        preview = (resp.text or "")[:1200]
+        logging.error("HTTP error body preview (1200 chars): %s", preview)
+
+    resp.raise_for_status()
+    return resp
+
+
+def obtener_token_compania(nombre_compania: str):
+    login_url = f"{BASE_URL}/api/authentication/login/backend"
+    login_data = {"username": SUPERADMIN_USER, "password": SUPERADMIN_PASS}
+
+    logging.info("Login superadmin en %s", login_url)
+    resp = request_with_debug("POST", login_url, json=login_data, timeout=60)
+    data = safe_json(resp)
+    if not data:
+        raise ValueError("Login no devolvió JSON válido.")
+
+    super_token = (data.get("data") or {}).get("token")
+    if not super_token:
+        raise ValueError(f"No se encontró data.token en login response. Keys: {list(data.keys())}")
+
+    company_id = companies[nombre_compania]
+
+    change_url = f"{BASE_URL}/api/authentication/change-company/master"
+    headers = {"Authorization": f"Bearer {super_token}"}
+    payload = {"companyId": company_id}
+
+    logging.info("Change-company a '%s' (companyId=%s)", nombre_compania, company_id)
+    resp2 = request_with_debug("POST", change_url, headers=headers, json=payload, timeout=60)
+    data2 = safe_json(resp2)
+    if not data2:
+        raise ValueError("Change-company no devolvió JSON válido.")
+
+    token = data2.get("token") or (data2.get("data") or {}).get("token")
+    if not token:
+        raise ValueError(f"No se encontró token en change-company response. Keys: {list(data2.keys())}")
+
+    logging.info("Token de compañía obtenido OK.")
+    return token, company_id
+
+
+def obtener_customers_page(token: str, page: int, page_size: int, time_zone: str,
+                          select_type: str | None = None, value: str | None = None):
+    """
+    GET /api/customer-v2/paginated
+
+    Estructura real vista:
+    {
+      "status": 200,
+      "message": "...",
+      "data": {
+        "dataCount": 2291,
+        "data": [ ... customers ... ]
+      }
+    }  [file:51]
+    """
+    url = f"{BASE_URL}/api/customer-v2/paginated"
+    headers = {"Authorization": f"Bearer {token}"}
+
+    params = {"page": str(page), "pageSize": str(page_size), "timeZone": time_zone}
+    if select_type:
+        params["selectType"] = select_type
+    if value:
+        params["value"] = value
+
+    logging.info("Pidiendo customers page=%s pageSize=%s", page, page_size)
+    resp = request_with_debug("GET", url, headers=headers, params=params, timeout=60)
+    return safe_json(resp)
+
+
+def extraer_todos_los_clientes(token: str, time_zone: str, page_size: int,
+                               select_type: str | None = None, value: str | None = None):
+    page = 1
+    all_customers = []
+    total_pages = None
+
+    while True:
+        payload = obtener_customers_page(
+            token=token,
+            page=page,
+            page_size=page_size,
+            time_zone=time_zone,
+            select_type=select_type,
+            value=value,
+        )
+
+        if not payload:
+            logging.error("Respuesta vacía/no-JSON en page=%s. Abortando.", page)
+            break
+
+        data_block = payload.get("data") or {}
+        items = data_block.get("data") or []            # <-- CLAVE [file:51]
+        data_count = data_block.get("dataCount")        # <-- CLAVE [file:51]
+
+        if page == 1:
+            logging.info("Keys data_block: %s", list(data_block.keys()))
+            logging.info("dataCount=%s", data_count)
+
+        logging.info("Items recibidos en page %s: %s", page, len(items))
+        all_customers.extend(items)
+
+        if data_count is None:
+            # Fallback si algún día no viene dataCount
+            if not items or len(items) < page_size:
+                logging.info("Fin por fallback (items vacíos o < pageSize).")
+                break
+            page += 1
+            continue
+
+        if total_pages is None:
+            total_pages = (int(data_count) // page_size) + (1 if int(data_count) % page_size else 0)
+            logging.info("Total pages calculadas: %s", total_pages)
+
+        if page >= total_pages:
+            break
+
+        page += 1
+
+    logging.info("Total customers acumulados: %s", len(all_customers))
+    return all_customers
+
+
+def guardar_csv(clientes: list[dict], filename: str):
+    keys = set()
+    for c in clientes:
+        if isinstance(c, dict):
+            keys.update(c.keys())
+    fieldnames = sorted(keys)
+
+    logging.info("Escribiendo CSV: %s (columnas=%s)", filename, len(fieldnames))
+    with open(filename, "w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=fieldnames)
+        w.writeheader()
+        for c in clientes:
+            w.writerow(c if isinstance(c, dict) else {})
+
+
+def parse_args():
+    p = argparse.ArgumentParser(description="Exporta clientes desde /api/customer-v2/paginated")
+    p.add_argument("--company", default=DEFAULT_COMPANY, help="Nombre de compañía (key en config.companies)")
+    p.add_argument("--pageSize", type=int, default=PAGE_SIZE)
+    p.add_argument("--timeZone", default=TIMEZONE)
+    p.add_argument("--selectType", default=None)
+    p.add_argument("--value", default=None)
+    p.add_argument("--debug", action="store_true")
+    return p.parse_args()
+
+
+if __name__ == "__main__":
+    args = parse_args()
+    setup_logging(args.debug)
+
+    logging.info("Company=%s pageSize=%s timeZone=%s selectType=%s value=%s",
+                 args.company, args.pageSize, args.timeZone, args.selectType, args.value)
+
+    if args.company not in companies:
+        disponibles = ", ".join(sorted(companies.keys()))
+        logging.error("Compañía '%s' no existe. Disponibles: %s", args.company, disponibles)
+        raise SystemExit(1)
+
+    token, company_id = obtener_token_compania(args.company)
+    logging.info("companyId=%s", company_id)
+
+    clientes = extraer_todos_los_clientes(
+        token=token,
+        time_zone=args.timeZone,
+        page_size=args.pageSize,
+        select_type=args.selectType,
+        value=args.value,
+    )
+
+    ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+    out = f"clientes_{args.company.replace(' ', '_')}_{ts}.csv"
+    guardar_csv(clientes, out)
+
+    logging.info("OK: %s clientes guardados en %s", len(clientes), out)
