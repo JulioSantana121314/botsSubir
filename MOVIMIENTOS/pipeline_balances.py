@@ -17,15 +17,20 @@ SERVICE_ACCOUNT_FILE = "../credentials/bamboo-parsec-477706-i5-f024e2770bbe.json
 SPREADSHEET_ID = "1caBEqmk6sM6MJfiYyq5BX-Hu0r9BOj8lQtaONHIZWrc"
 SHEET_NAME = "Balances"  # Mantenido por compatibilidad, pero no se usa
 
-def crear_pipeline(grupo=None, timestamp_limite=None):
+def crear_pipeline(grupo=None, timestamp_limite=None, grupos_companias=None):
     """Crea la pipeline con filtros opcionales por grupo y timestamp"""
     
-    # Match inicial
     match_stage = {"used_as_previous": False}
     
-    # Agregar filtro por grupo si se especifica
     if grupo:
         match_stage["grupo"] = grupo
+    if timestamp_limite:
+        match_stage["fecha"] = {"$lte": timestamp_limite}
+    
+    # NUEVO:
+    companias_del_grupo = []
+    if grupos_companias and grupo:
+        companias_del_grupo = grupos_companias.get(grupo, [])
     
     # Agregar filtro por timestamp si se especifica
     if timestamp_limite:
@@ -61,6 +66,7 @@ def crear_pipeline(grupo=None, timestamp_limite=None):
                 }
             }
         }
+        
     },
     {"$sort": {"website_title": 1, "username": 1, "fecha": -1}},
     {

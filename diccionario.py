@@ -431,12 +431,12 @@ WEBSITES = {
     },
     "SUPER DRAGON": {
         "url": "https://dailyug.com/gmpc/login",
-        
+
         "accounts": [
             # {"usuario": "oakcreek", "password": "OaKcR3ekD4ve"},
             # {"usuario": "hailey", "password": "HaiLey8888"},
         ],
-        
+
     },
     "VEGAS ROLL": {
         "url": "https://backend.vegas-roll.com/",
@@ -523,304 +523,6 @@ GRUPOS_COMPANIAS = {
 
 }
 
-# Asignación de grupo por usuario
-USERS_GRUPOS = {
-
-    # Orion Stars
-    "LupesweepsOS": "PPP",
-    "Wisegangautostore": "Wise Gang",
-    "AmandaP_BOT": "Ballerz",
-    "slapitgames3": "Slap It",
-    "kobegames3": "Oak Creek",
-    "MKingdomOS": "Mushroom Kingdom",
-    "OceanSluggerz01_Cashier": "Ocean Sluggerz",
-    "LuckyCas": "Lucky Room",
-    "a5games3": "Hailey Games",
-    "ReggiesProducts_Cashier": "Players Club",
-    "CashierTDCRB1": "Tierlock",
-    "CashierTAPEC_1": "TAP",
-
-    # Fire Kirin
-    "VasquezCash": "PPP",
-    "Wisegangautostore": "Wise Gang",
-    "AmandaP_BOT": "Ballerz",
-    "slapitgames": "Slap It",
-    "kobe": "Oak Creek",
-    "whatever": "Mushroom Kingdom",
-    "OceanSluggerz01_Cashier": "Ocean Sluggerz",
-    "IluckyroomFK": "Lucky Room",
-    "a5games": "Hailey Games",
-    "ReggiesProducts_Cashier": "Players Club",
-    "CashierTDCRB1": "Tierlock",
-    "TAPTS_CSH_1": "TAP",
-
-    # Panda Master
-    "LVasquezPMc": "PPP",
-    "Wisegangautostore": "Wise Gang",
-    "AmandaP_BOT": "Ballerz",
-    "slapitgames": "Slap It",
-    "kobe": "Oak Creek",
-    "whatever": "Mushroom Kingdom",
-    "OceanSluggerz001_Cashier": "Ocean Sluggerz",
-    "a5games": "Hailey Games",
-    "ReggiesProducts_Cashier": "Players Club",
-    "CashierTDCRB1": "Tierlock",
-    "TdcTaPm_Cash1": "TAP",
-
-    # Milky Way
-    "CashierLV": "PPP",
-    "Autostore": "Wise Gang",
-    "bworldweb007": "Ballerz",
-    "OceanSluggerz01_Cashier": "Ocean Sluggerz",
-    "MWTapCash": "TAP",
-
-    # Vblink
-    "Atencionpre1": "PPP",
-    "Autostore": "Wise Gang",
-    "WebsiteCashier": "Ballerz",
-    "slapitnow": "Slap It",
-    "playoakcreek": "Oak Creek",
-    "Whatever777": "Mushroom Kingdom",
-    "OceanSluggerz01B": "Ocean Sluggerz",
-    "Cashilucky": "Lucky Room",
-    "HaileyBE": "Hailey Games",
-    "playerbot": "Players Club",
-    "DisTDCroVB15163": "Tierlock",
-    "VtapBLINK182CASH": "TAP",
-
-    # Ultra Panda
-    "Atencionpre": "PPP",
-    "Automatedside": "Wise Gang",
-    "WebsiteBOT": "Ballerz",
-    "slapitnow": "Slap It",
-    "playoakcreek": "Oak Creek",
-    "Whatever777": "Mushroom Kingdom",
-    "OceanSluggerz01B": "Ocean Sluggerz",
-    "CashiluckyR": "Lucky Room",
-    "HaileyBE": "Hailey Games",
-    "playerbot": "Players Club",
-    "UPTDCSUB19751": "Tierlock",
-    "TAuPSub1LPMP": "TAP",
-
-    # Golden Treasure
-    "Perubot": "PPP",
-    "Autostore1": "Wise Gang",
-    "AmandasPBOT": "Ballerz",
-    "iluckyCash": "Lucky Room",
-    "playerbot": "Players Club",
-    "GTDCCSUB35857": "Tierlock",
-    "TapDBGTSub123": "TAP",
-
-    # Egame
-    "Perubot": "PPP",
-    "Autostore": "Wise Gang",
-    "BallerzWebBOT": "Ballerz",
-    "ReggiesProducts1": "Players Club",
-    "DisTDCroVB15163": "Tierlock",
-    "TAPEGGsBOT0": "TAP",
-
-    # Ace Book
-    "Wisegangauto": "Wise Gang",
-    "AmandasPBOT": "Ballerz",
-    "playerbot": "Players Club",
-    "ABTDCDistro": "Tierlock",
-    "ACNOABtap175": "TAP",
-
-    # Juwa
-    "PeruLogin": "PPP",
-    "autostore": "Wise Gang",
-    "AmandaP_BOT": "Ballerz",
-    "slapitgames": "Slap It",
-    "kcheung": "Oak Creek",
-    "Whatever777": "Mushroom Kingdom",
-    "OceanSluggerz01_Cashier": "Ocean Sluggerz",
-    "iluckyroomjw": "Lucky Room",
-    "a5games": "Hailey games",
-    "JWStoreDistro": "Tierlock",
-    "TAPJuwaMewa6131": "TAP",
-
-    # Game Vault
-    "perubot": "PPP",
-    "Autostore": "Wise Gang",
-    "AmandaP_BOT": "Ballerz",
-    "slapitgames": "Slap It",
-    "kcheung": "Oak Creek",
-    "whatever": "Mushroom Kingdom",
-    "iluckyroomGV": "Lucky Room",
-    "a5games": "Hailey Games",
-    "ReggiesProducts01": "Players Club",
-    "GVStoreDistro": "Tierlock",
-    "GVotDTapBno1": "TAP",
-
-    # Highstakes
-    "Autostore": "Wise Gang",
-
-    # Galaxy World
-    "automated": "Wise Gang",
-    "bworldweb007": "Ballerz",
-    "ReggiesProducts01": "Players Club",
-
-    # Gameroom
-    "Autostore": "Wise Gang",
-    "WebBOT": "Ballerz",
-    "slapitgames": "Slap It",
-    "kobecheung": "Oak Creek",
-    "MKingdomGRO": "Mushroom Kingdom",
-    "a5games": "Hailey Games",
-
-    # Cash Machine
-    "Autostore": "Wise Gang",
-    "WebCashier": "Ballerz",
-    "slapit": "Slap It",
-    "kobe": "Oak Creek",
-    "a5games": "Hailey",
-    "CashCaxaTap": "TAP",
-
-    # Vegas Sweeps
-    "autostore": "Wise Gang",
-    "slapitgames": "Slap It",
-    "kobe": "Oak Creek",
-    "a5games": "Hailey Games",
-
-    # Mafia
-    "Autostore": "Wise Gang",
-    "WebCashier": "Ballerz",
-    "kobe": "Oak Creek",
-    "a5games": "Hailey Games",
-    "MafCashq112": "TAP",
-
-    # Noble
-    "Autostore": "Wise Gang",
-    "WebCashier": "Ballerz",
-    "slapitgames": "Slap It",
-    "kobe": "Oak Creek",
-    "a5games": "Hailey Games",
-    "TapDsCash13r": "TAP",
-
-    # Winstar
-    "Autostore": "Wise Gang",
-    "WebBOT": "Ballerz",
-    "kobe": "Oak Creek",
-    "A5games": "Hailey Games",
-    "TapWinCash": "TAP",
-
-    # Mr All in One
-    "Autostore": "Wise Gang",
-    "TAPMRCashier": "TAP",
-
-    # Lucky Stars
-    "Autostore": "Wise Gang",
-    "WebBOT": "Ballerz",
-    "slapitgames": "Slap It",
-    "oakcreek": "Oak Creek",
-    "haileygames": "Hailey Games",
-    "TapLuckyCash": "TAP",
-
-    # Vegas X
-    "Autostore1": "Wise Gang",
-    "bworldweb007": "Ballerz",
-    "slapgames": "Slap It",
-    "oakcreek": "Oak Creek",
-    "iluckyroomVX": "Lucky Room",
-    "haileygame": "Hailey Games",
-
-    # Mega Spin
-    "Wisegang26amu": "Wise Gang",
-    # "slapitgames": "Slap It",
-    "kobe": "Oak Creek",
-    "whatever": "Mushroom Kingdom",
-    "a5games": "Hailey Games",
-
-    # Riversweeps
-    "Autostore": "Wise Gang",
-    "OceanSluggerz01_Bot": "Ocean Sluggerz",
-    "iLuckyRS_CashLuckyR": "Lucky Room",
-    "ReggiesProducts": "Players Club",
-    "RVTDCDistro": "Tierlock",
-    "CASHriverTAPsweeps1": "TAP",
-
-    # 100 Plus
-    "USNBGamesBot001": "Wise Gang",
-
-    # Cash Frenzy
-    "Autostore": "Wise Gang",
-    "whatever": "Mushroom Kingdom",
-    "CFTaCaSt0": "TAP",
-
-    # Blue Dragon
-    "Autostore": "Wise Gang",
-    "ReggiesProducts": "Players Club",
-
-    # Easy Street
-    "Autostore": "Wise Gang",
-
-    # Fish Glory
-    "Autostore": "Wise Gang",
-
-    # Gemini
-    "NBGamesBot": "Wise Gang",
-    "ReggiesProducts": "Players Club",
-
-    # Glamour Spin
-    "Autostore": "Wise Gang",
-
-    # Highroller
-    "NEWBGamesBot": "Wise Gang",
-
-    # Jackpot Frenzy
-    "Crystal": "Wise Gang",
-
-    # Joker
-    "Autostore": "Wise Gang",
-    "Jok3rCashQ": "TAP",
-
-    # King of Pop
-    "Autostore": "Wise Gang",
-    "oakcreek": "Oak Creek",
-    "a5games": "Hailey Games",
-
-    # Kraken
-    "Autostore": "Wise Gang",
-
-    # Legend Fire
-    "Autostore": "Wise Gang",
-
-    # Loot
-    "NEWBGamesC": "Wise Gang",
-
-    # Moolah
-    "Autostore": "Wise Gang",
-
-    # River Monster
-    "NEWBGamesC": "Wise Gang",
-
-    # Sirius
-    "NEWBGamesCashier": "Wise Gang",
-
-    # Super Dragon
-    "oakcreek": "Oak Creek",
-    "hailey": "Hailey Games",
-
-    # Vegas Roll
-    "Autostore": "Wise Gang",
-    "TapStoas689": "TAP",
-
-    # Winners Club
-    "Autostore": "Wise Gang",
-
-    # Yolo
-    "Autostore1": "Wise Gang",
-    "ReggiesProducts01": "Players Club",
-
-    # Black Mamba
-    "Wisegangauto": "Wise Gang",
-
-    # Lucky Paradise
-    "Autostore": "Wise Gang",
-    "playerstore1": "Players Club"
-
-}
-
 CAPTCHA_GRUPOS = {
     "grupo1": [
         "ORION STARS",
@@ -856,22 +558,27 @@ CAPTCHA_GRUPOS = {
     ]
 }
 
-
-
-
-
 bulk_docs = []
 
 for website, info in WEBSITES.items():
     for acc in info["accounts"]:
         username = acc["usuario"]
-        compania = USERS_GRUPOS.get(username, None)
         bulk_docs.append({
             "website": website,
-            "username": username,
+            "username": acc["usuario"],
             "password": acc["password"],
-            "grupo": compania
-        })
+            "grupo": acc.get("grupo")
+})
+
+def obtener_grupo(username, website=None):
+    """Busca el grupo de un usuario en WEBSITES"""
+    for site, info in WEBSITES.items():
+        if website and site.upper() != website.upper():
+            continue
+        for acc in info["accounts"]:
+            if acc["usuario"] == username:
+                return acc.get("grupo")
+    return None
 
 # ✅ SOLO ejecutar cuando se corre directamente, NO al importar
 if __name__ == "__main__":

@@ -65,7 +65,7 @@ for folder in [LOG_FOLDER, CAPTCHA_FOLDER, EVIDENCE_FOLDER]:
 
 #### === Importa tu mapping de grupos === ####
 sys.path.insert(0, str(Path(__file__).parent.parent))
-from diccionario import WEBSITES, USERS_GRUPOS, CAPTCHA_GRUPOS
+from diccionario import WEBSITES, CAPTCHA_GRUPOS, obtener_grupo
 
 
 #### === Timestamp helper === ####
@@ -630,42 +630,49 @@ MONGO_DB = os.getenv('MONGO_DB', 'plataforma_finanzas')
 MONGO_COLLECTION = os.getenv('MONGO_COLLECTION', 'balances_bot')
 
 
-def obtener_grupo_por_usuario(username):
-    """Busca grupo por username, si no existe devuelve None"""
-    return USERS_GRUPOS.get(username, None)
-
-
 def enviar_resultado_balance(sheet, website, username, fecha=None, balance=None):
+    """
+    Registra un balance en MongoDB.
+    El grupo se obtiene automáticamente desde diccionario.py
+    """
     if fecha is None:
         fecha = get_current_timestamp()
     
-    grupo = obtener_grupo_por_usuario(username)
+    # ✅ Obtener grupo desde diccionario.py (NO desde MongoDB)
+    grupo = obtener_grupo(username, website)
     
     # ✅ NORMALIZAR a Title Case
     website_normalized = website.strip().title()
     
+    # Renombrar captcha si existe
     _renombrar_captcha_automatico(website)
     
     if EXPORT_MODE.upper() == "SHEET":
+        # Implementación sheets (si la necesitas)
         pass
     elif EXPORT_MODE.upper() == "MYSQL":
+        # Implementación MySQL (si la necesitas)
         pass
     else:
+        # MODO MONGO (predeterminado)
         client = None
         try:
             client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=20000)
             db = client[MONGO_DB]
             collection = db[MONGO_COLLECTION]
+            
             doc = {
-                "website": website_normalized,  # ← Usar normalizado
+                "website": website_normalized,
                 "username": username,
                 "fecha": fecha,
                 "balance": balance,
                 "used_as_previous": False,
-                "grupo": grupo
+                "grupo": grupo  # ← Viene de diccionario.py, no de MongoDB
             }
+            
             collection.insert_one(doc)
-            logger.info(f"[MongoDB] Balance registrado: {website_normalized} | {username} | {balance} | {fecha}")
+            logger.info(f"[MongoDB] ✅ Balance registrado: {website_normalized} | {username} | {balance} | {grupo}")
+            
         except Exception as e:
             logger.error(f"[ERROR MongoDB] No se pudo insertar documento: {e}")
             log_exception(logger, "Error al insertar en MongoDB")
@@ -675,3 +682,4 @@ def enviar_resultado_balance(sheet, website, username, fecha=None, balance=None)
                     client.close()
                 except Exception:
                     pass
+
