@@ -49,6 +49,11 @@ companies = {
     "Token Tiger": "68d6e9a9b875bc1c2bf4f81e",
     "Innercore Games": "6924a6deacc81a35ddf13ada",
     "Fast Fortunes" : "69065cf4eacdf563c72c5cf5",
+    "Lucky Duck Lounge" : "695e8ff03ea56ac974bfc1e7",
+    "Simply Unmatched": "695e912b3ea56ac974bfc3f7",
+    "Lucky Shamrock": "695e917e3ea56ac974bfc4ec",
+    "Paper Route": "695e8e0c3ea56ac974bfbe9f",
+    "Crazy Coins": "69617010acfc5906d0c6f66e",
 }
 
 SUPERADMIN_USER = os.getenv('SUPERADMIN_USER')

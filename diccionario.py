@@ -1,4 +1,8 @@
+import os
+from dotenv import load_dotenv
 import pymongo
+
+load_dotenv()
 
 # Tu diccionario original de juegos, cuentas y passwords
 WEBSITES = {
@@ -475,6 +479,9 @@ WEBSITES = {
 
 # Grupos definidos con sus compañías
 GRUPOS_COMPANIAS = {
+    "Wysaro": [
+        "Lucky Duck Lounge", "Simply Unmatched", "Lucky Shamrock", "Paper Route", "Crazy Coins",
+    ],
     "Tierlock": [
         "The Fun Room", "Slots Gone Wild", "JJsreelsadventures", "Lucky Luxe", "Snarcade", "Lucky Buddy", "Devine Slots", "BordersWay", "The Players Lounge",
     ],
@@ -582,7 +589,7 @@ def obtener_grupo(username, website=None):
 
 # ✅ SOLO ejecutar cuando se corre directamente, NO al importar
 if __name__ == "__main__":
-    client = pymongo.MongoClient("mongodb+srv://kam_db_user:VJbs7fgYKJokO9pz@cluster0.e8doyfk.mongodb.net/?appName=Cluster0")
+    client = pymongo.MongoClient(os.getenv('MONGO_URI'))
     db = client["plataforma_finanzas"]
     collection = db["cuentas_companias"]
     

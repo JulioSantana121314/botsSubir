@@ -1,4 +1,8 @@
+import os
+from dotenv import load_dotenv
 from pymongo import MongoClient
+
+load_dotenv()
 
 GRUPOS_COMPANIAS = {
     "Tierlock": [
@@ -21,7 +25,7 @@ GRUPOS_COMPANIAS = {
     "Token Tiger" : ["Token Tiger"],
 }
 
-client = MongoClient("mongodb+srv://kam_db_user:VJbs7fgYKJokO9pz@cluster0.e8doyfk.mongodb.net/?appName=Cluster0")
+client = MongoClient(os.getenv('MONGO_URI'))
 db = client["plataforma_finanzas"]
 col = db["grupos_companias"]
 

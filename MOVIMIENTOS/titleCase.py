@@ -1,11 +1,15 @@
+import os
+from dotenv import load_dotenv
 from pymongo import MongoClient, UpdateOne
+
+load_dotenv()
 
 def to_title_case(s):
     if not s: return s
     return ' '.join([w.capitalize() for w in s.split()])
 
 client = MongoClient(
-    "mongodb+srv://kam_db_user:VJbs7fgYKJokO9pz@cluster0.e8doyfk.mongodb.net/?appName=Cluster0"
+    os.getenv('MONGO_URI')
 )
 db = client["plataforma_finanzas"]
 col = db["balances_bot"]
