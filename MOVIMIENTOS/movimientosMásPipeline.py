@@ -121,7 +121,7 @@ def obtener_token_compania(nombre_compania):
 def extraer_movimientos(nombre_compania, token, company_id, fecha, timestamp_extraccion):
     headers = {"Authorization": f"Bearer {token}"}
     movements_url = "https://api.backend.biz/api/movements/paginated"
-    page_size = 500
+    page_size = 1000
 
     date_filter = f"{fecha},{fecha}"
 

@@ -21,9 +21,9 @@ WEBSITES = {
             {"usuario": "ReggiesProducts_Cashier", "password": "Monchie21Monchie21!!", "grupo": "Players Club"},
             {"usuario": "CashierTDCRB1", "password": 'DVASBFU!"182571982152', "grupo": "Tierlock"},
             {"usuario": "CashierTAPEC_1", "password": "TAPsdpTDC_62!", "grupo": "TAP"},
-            {"usuario": "TokenT26", "password": "Resetme1234!!"},
-            {"usuario": "Pandagod26", "password": 'PMAdmin567!"'},
-            {"usuario": "Wysaro26", "password": "Auto1989!@2025"},
+            {"usuario": "TokenT26", "password": "Resetme1234!!", "grupo": "Token Tiger"},
+            {"usuario": "Pandagod26", "password": 'PMAdmin567!"', "grupo": "Pandagod"},
+            {"usuario": "Wysaro26", "password": "Auto1989!@2025", "grupo": "Wysaro"},
         ],
     },
     "JUWA": {
@@ -40,9 +40,9 @@ WEBSITES = {
             # {"usuario": "a5games", "password": "HaiLey8888"},
             {"usuario": "JWStoreDistro", "password": "JWStoreDistro123!#$", "grupo": "Tierlock"},
             {"usuario": "TAPJuwaMewa6131", "password": "JurTapMyTap!875", "grupo": "TAP"},
-            {"usuario": "tokenT26", "password": "Resetme1234"},
-            {"usuario": "Pandagod26", "password": 'PMAdmin567!"'},
-            {"usuario": "Wysaro26", "password": "Auto1989"},
+            {"usuario": "tokenT26", "password": "Resetme1234", "grupo": "Token Tiger"},
+            {"usuario": "Pandagod26", "password": 'PMAdmin567!"', "grupo": "Pandagod"},
+            {"usuario": "Wysaro26", "password": "Auto1989", "grupo": "Wysaro"},
         ],
     },
     "FIRE KIRIN": {
@@ -60,9 +60,9 @@ WEBSITES = {
             {"usuario": "ReggiesProducts_Cashier", "password": "Winning6543", "grupo": "Players Club"},
             {"usuario": "CashierTDCRB1", "password": "DVASBFU_81236871250", "grupo": "Tierlock"},
             {"usuario": "TAPTS_CSH_1", "password": "fkes1dragon", "grupo": "TAP"},
-            {"usuario": "TokenT26", "password": "Resetme1234"},
-            {"usuario": "Pandagod26", "password": 'PMAdmin567!"'},
-            {"usuario": "Wysaro26", "password": "Auto1989"},
+            {"usuario": "TokenT26", "password": "Resetme1234", "grupo": "Token Tiger"},
+            {"usuario": "Pandagod26", "password": 'PMAdmin567!"', "grupo": "Pandagod"},
+            {"usuario": "Wysaro26", "password": "Auto1989", "grupo": "Wysaro"},
         ],
     },
     "PANDA MASTER": {
@@ -79,9 +79,9 @@ WEBSITES = {
             {"usuario": "ReggiesProducts_Cashier", "password": "Winning4276", "grupo": "Players Club"},
             {"usuario": "CashierTDCRB1", "password": "192371_pm_DVASBFU", "grupo": "Tierlock"},
             {"usuario": "TdcTaPm_Cash1", "password": "TaptapcashPM_127", "grupo": "TAP"},
-            {"usuario": "TokenT26", "password": "Resetme1234"},
-            {"usuario": "Pandagod", "password": 'PMAdmin567!"'},
-            {"usuario": "Wysaro26", "password": "Auto1989"},
+            {"usuario": "TokenT26", "password": "Resetme1234", "grupo": "Token Tiger"},
+            {"usuario": "Pandagod", "password": 'PMAdmin567!"', "grupo": "Pandagod"},
+            {"usuario": "Wysaro26", "password": "Auto1989", "grupo": "Wysaro"},
         ],
     },
     "MILKY WAY": {
@@ -92,7 +92,7 @@ WEBSITES = {
             {"usuario": "bworldweb007", "password": "Agent38", "grupo": "Ballerz"},
             {"usuario": "OceanSluggerz01_Cashier", "password": "Focus987_6152", "grupo": "Ocean Sluggerz"},
             {"usuario": "MWTapCash", "password": "BashCraqZs_2", "grupo": "TAP"},
-            {"usuario": "Pandagod26", "password": 'PMAdmin567!"'},
+            {"usuario": "Pandagod26", "password": 'PMAdmin567!"', "grupo": "Pandagod"},
         ],
     },
     "VBLINK": {
@@ -110,9 +110,9 @@ WEBSITES = {
             {"usuario": "playerbot", "password": "TIme2plan!$", "grupo": "Players Club"},
             {"usuario": "DisTDCroVB15163", "password": "TDCvbCPRV!61365", "grupo": "Tierlock"},
             {"usuario": "VtapBLINK182CASH", "password": "TapTopVbSAC11!", "grupo": "TAP"},
-            {"usuario": "TokenT26", "password": "Resetme1234$"},
-            {"usuario": "Pandagod26", "password": "PMAdmin567!@"},
-            {"usuario": "Wysaro26", "password": "Wysar0G41!5a"},
+            {"usuario": "TokenT26", "password": "Resetme1234$", "grupo": "Token Tiger"},
+            {"usuario": "Pandagod26", "password": "PMAdmin567!@", "grupo": "Pandagod"},
+            {"usuario": "Wysaro26", "password": "Wysar0G41!5a", "grupo": "Wysaro"},
         ],
     },
     "ULTRA PANDA": {
@@ -130,9 +130,9 @@ WEBSITES = {
             {"usuario": "playerbot", "password": "TIme2plan!$", "grupo": "Players Club"},
             {"usuario": "UPTDCSUB19751", "password": "tudpc182351soobs", "grupo": "Tierlock"},
             {"usuario": "TAuPSub1LPMP", "password": "Tap@TappinUP44!", "grupo": "TAP"},
-            {"usuario": "TokenT26", "password": "Resetme1234$"},
-            {"usuario": "Pandagod26", "password": "PMAdmin567!@"},
-            {"usuario": "Wysaro26", "password": "Wysar0G41!5"},
+            {"usuario": "TokenT26", "password": "Resetme1234$", "grupo": "Token Tiger"},
+            {"usuario": "Pandagod26", "password": "PMAdmin567!@", "grupo": "Pandagod"},
+            {"usuario": "Wysaro26", "password": "Wysar0G41!5", "grupo": "Wysaro"},
         ],
     },
     "GOLDEN TREASURE": {
@@ -145,9 +145,9 @@ WEBSITES = {
             {"usuario": "playerbot", "password": "TIme2plan!$", "grupo": "Players Club"},
             {"usuario": "GTDCCSUB35857", "password": "gtdcsub835gt2", "grupo": "Tierlock"},
             {"usuario": "TapDBGTSub123", "password": "PanPass91!67", "grupo": "TAP"},
-            {"usuario": "TokenT26", "password": "Resetme1234$"},
-            {"usuario": "Pandagod26", "password": "PMAdmin567!@"},
-            {"usuario": "Wysaro26", "password": "Wysar0G41!"},
+            {"usuario": "TokenT26", "password": "Resetme1234$", "grupo": "Token Tiger"},
+            {"usuario": "Pandagod26", "password": "PMAdmin567!@", "grupo": "Pandagod"},
+            {"usuario": "Wysaro26", "password": "Wysar0G41!", "grupo": "Wysaro"},
         ],
     },
     "Egames": {
@@ -159,9 +159,9 @@ WEBSITES = {
             {"usuario": "ReggiesProducts1", "password": "Monchie21!", "grupo": "Players Club"},
             {"usuario": "DisTDCroVB15163", "password": "EGTDCroVB15164", "grupo": "Tierlock"},
             {"usuario": "TAPEGGsBOT0", "password": "BreakfastBun234!", "grupo": "TAP"},
-            {"usuario": "TokenT26", "password": "Resetme1234$"},
-            {"usuario": "Pandagod", "password": "PMAdmin567!@"},
-            {"usuario": "Wysaro26", "password": "Wysar0G4m1!"},
+            {"usuario": "TokenT26", "password": "Resetme1234$", "grupo": "Token Tiger"},
+            {"usuario": "Pandagod", "password": "PMAdmin567!@", "grupo": "Pandagod"},
+            {"usuario": "Wysaro26", "password": "Wysar0G4m1!", "grupo": "Wysaro"},
         ],
     },
     "ACE BOOK": {
@@ -172,8 +172,8 @@ WEBSITES = {
             {"usuario": "playerbot", "password": "TIme2plan!$", "grupo": "Players Club"},
             {"usuario": "ABTDCDistro", "password": "ABCDEFDis2025!", "grupo": "Tierlock"},
             {"usuario": "ACNOABtap175", "password": "Baltapz!!4ev4", "grupo": "TAP"},
-            {"usuario": "Pandagod26", "password": "PMAdmin567!@"},
-            {"usuario": "Wysaro26", "password": "Wysar0G4!"},
+            {"usuario": "Pandagod26", "password": "PMAdmin567!@", "grupo": "Pandagod"},
+            {"usuario": "Wysaro26", "password": "Wysar0G4!", "grupo": "Wysaro"},
         ],
     },
     "GAME VAULT": {
@@ -190,9 +190,9 @@ WEBSITES = {
             {"usuario": "ReggiesProducts01", "password": "Winning2563", "grupo": "Players Club"},
             {"usuario": "GVStoreDistro", "password": "!GVStoreDistros125$#1", "grupo": "Tierlock"},
             {"usuario": "GVotDTapBno1", "password": "GVPSWFJQM1!&613", "grupo": "TAP"},
-            {"usuario": "TokenT26", "password": "Resetme1234!"},
-            {"usuario": "Pandagod26", "password": "Money1234!"},
-            {"usuario": "Wysaro26", "password": "Auto1989!@"},
+            {"usuario": "TokenT26", "password": "Resetme1234!", "grupo": "Token Tiger"},
+            {"usuario": "Pandagod26", "password": "Money1234!", "grupo": "Pandagod"},
+            {"usuario": "Wysaro26", "password": "Auto1989!@", "grupo": "Wysaro"},
         ],
     },
     "HIGHSTAKES": {
@@ -292,7 +292,7 @@ WEBSITES = {
     "VEGAS X": {
         "url": "https://cashier.vegas-x.org/login",
         "accounts": [
-            {"usuario": "WisegangAuto", "password": "Auto1989!@"},
+            {"usuario": "WisegangAuto", "password": "Auto1989!@", "grupo": "Wise Gang"},
             {"usuario": "bworldweb007", "password": "Agent38", "grupo": "Ballerz"},
             # {"usuario": "slapgames", "password": "Sl4piTG@m3z!"},
             # {"usuario": "oakcreek", "password": "OaKcR3ekD4v!"},
@@ -319,9 +319,9 @@ WEBSITES = {
             # {"usuario": "ReggiesProducts", "password": "Winning2"},
             {"usuario": "RVTDCDistro", "password": "RVTDCDishggsdjt5azys123!#", "grupo": "Tierlock"},
             {"usuario": "CASHriverTAPsweeps1", "password": "DTTG+Riv12456", "grupo": "TAP"},
-            {"usuario": "TokenT26", "password": "Resetme1234"},
-            {"usuario": "Pandagod26", "password": 'PMAdmin567!"'},
-            {"usuario": "Wysaro26", "password": "Auto1989"},
+            {"usuario": "TokenT26", "password": "Resetme1234", "grupo": "Token Tiger"},
+            {"usuario": "Pandagod26", "password": 'PMAdmin567!"', "grupo": "Pandagod"},
+            {"usuario": "Wysaro26", "password": "Auto1989", "grupo": "Wysaro"},
         ],
     },
     "100 PLUS": {
@@ -472,7 +472,7 @@ WEBSITES = {
     "Fire Phoenix": {
         "url": "http://pos.fpc-mob.com/",
         "accounts": [
-            {"usuario": "Autostoree2026", "password": "Auto1989!"},
+            {"usuario": "Autostoree2026", "password": "Auto1989!", "grupo": "Wise Gang"},
         ]
     }
 }
@@ -497,15 +497,15 @@ GRUPOS_COMPANIAS = {
     "Ballerz": [
         "Ballerz World of Gamez"
     ],
-    "Slap It": [
-        "Slap It"
-    ],
-    "Oak Creek": [
-        "Play OakCreek"
-    ],
-    "Slap It y Oak Creek": [
-        "Slap It", "Play OakCreek"
-    ],
+    # "Slap It": [
+    #     "Slap It"
+    # ],
+    # "Oak Creek": [
+    #     "Play OakCreek"
+    # ],
+    # "Slap It y Oak Creek": [
+    #     "Slap It", "Play OakCreek"
+    # ],
     "Mushroom Kingdom": [
         "Mushroom Kingdom"
     ],
@@ -515,9 +515,9 @@ GRUPOS_COMPANIAS = {
     "Lucky Room": [
         "Lucky Room"
     ],
-    "Hailey Games": [
-        "Hailey Games"
-    ],
+    # "Hailey Games": [
+    #     "Hailey Games"
+    # ],
     "Players Club": [
         "The Players Club"
     ],

@@ -9,11 +9,11 @@ from sklearn.model_selection import train_test_split
 import cv2
 
 # ==================== CONFIG ====================
-CAPTCHA_NAME = "grupo2_v3_progressive"
+CAPTCHA_NAME = "grupo2_v4_progressive"
 DATASET_PATH = "./captcha_datasets/grupo2/"
 
 # ✅ Base correcta (tu v2 pred)
-BASE_PRED_MODEL_PATH = "models/captcha_grupo2_v2_pred.keras"
+BASE_PRED_MODEL_PATH = "models/captcha_grupo2_v3_progressive.keras"
 
 IMG_WIDTH = 200
 IMG_HEIGHT = 60
@@ -332,7 +332,7 @@ def train_model():
 
     # Transfer learning desde v2_pred
     if os.path.exists(BASE_PRED_MODEL_PATH):
-        src_pred = keras.models.load_model(BASE_PRED_MODEL_PATH, compile=False)
+        src_pred = keras.models.load_model(BASE_PRED_MODEL_PATH, compile=False, safe_mode = False)
         copied = transfer_weights_from_v2pred(src_pred, model_pred)
         if copied == 0:
             print("[TL] ⚠️ No se copió nada. Eso indica que tu v2_pred no coincide en arquitectura/shapes.")

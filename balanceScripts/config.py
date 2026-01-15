@@ -185,7 +185,7 @@ def detectar_grupo_captcha(website_name):
 
 
 #### === Opciones Chrome/Bots === ####
-CHROME_HEADLESS = True
+CHROME_HEADLESS = False
 CHROME_WINDOW_SIZE = (900, 1300)
 CHROME_LANG = "en-US"
 
@@ -208,22 +208,22 @@ KERAS_PREDICT_TIMEOUT = int(os.getenv('KERAS_PREDICT_TIMEOUT', '10'))
 # ✅ CONFIGURACIÓN ACTUALIZADA CON LOS MODELOS V3
 CAPTCHA_CONFIG = {
     "grupo1": {
-        "model_path": os.path.join(BASE_FOLDER, r"..\captchaModel\models\captcha_grupo1_v2_pred.keras"),
+        "model_path": os.path.join(os.path.dirname(BASE_FOLDER), "captchaModel", "models", "captcha_grupo1_v2_pred.keras"),
         "img_width": 200,
         "img_height": 50,
         "max_length": 5,
         "characters": "0123456789"
     },
     "grupo2": {
-        "model_path": os.path.join(BASE_FOLDER, r"..\captchaModel\models\captcha_grupo2_v3_progressive_pred.keras"),
+        "model_path": os.path.join(os.path.dirname(BASE_FOLDER), "captchaModel", "models", "captcha_grupo2_v4_progressive_pred.keras"),
         "img_width": 200,
-        "img_height": 50,
+        "img_height": 60,
         "max_length": 4,
         "characters": "0123456789"
     },
     "grupo3": {
         # ✅ MODELO V3 PROGRESSIVE (95-96% accuracy)
-        "model_path": os.path.join(BASE_FOLDER, r"..\captchaModel\models\captcha_grupo3_v4_progressive_pred.keras"),
+        "model_path": os.path.join(os.path.dirname(BASE_FOLDER), "captchaModel", "models", "captcha_grupo3_v4_progressive_pred.keras"),
         "img_width": 200,
         "img_height": 60,  # ✅ Grupo 3 usa 60px de altura
         "max_length": 4,    # ✅ Grupo 3 usa 4 dígitos
@@ -518,7 +518,6 @@ def resolver_captcha_2captcha_api(image_bytes, captcha_path, website_name):
         return None
 
 
-#### === ✅ FUNCIÓN PRINCIPAL - NO CAMBIAR FIRMA === ####
 def resolver_captcha_2captcha(image_bytes, filename_prefix='captcha'):
     """
     Función unificada para resolver captchas.
@@ -571,7 +570,14 @@ def resolver_captcha_2captcha(image_bytes, filename_prefix='captcha'):
     for intento in range(1, max_retries + 1):
         logger.info(f"[CAPTCHA] Intento {intento}/{max_retries} con modelo {grupo_id}")
         
-        result, confidence = resolver_captcha_keras_interno(image_bytes, grupo_id, captcha_path)
+        # ✅ CORREGIDO: desempaquetar 3 valores en lugar de 2
+        result, confidence, timeout_occurred = resolver_captcha_keras_interno(image_bytes, grupo_id, captcha_path)
+        
+        # Si hubo timeout en la predicción, reintentar sin contar como intento fallido
+        if timeout_occurred:
+            logger.warning(f"[CAPTCHA] ⏱️ Timeout en predicción Keras - reintentando sin penalizar...")
+            time.sleep(1)
+            continue  # No incrementa el contador de intentos realmente
         
         if result:
             logger.info(f"[CAPTCHA] ✅ Captcha resuelto con {grupo_id} en intento {intento}: '{result}' (confianza: {confidence:.3f})")
