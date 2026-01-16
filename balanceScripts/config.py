@@ -1,6 +1,21 @@
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # 0=ALL, 1=INFO, 2=WARNING, 3=ERROR
 os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'  # Desactivar mensajes oneDNN
+
+# ✅ SETUP CUDA 11 ANTES DE IMPORTAR TENSORFLOW
+import site
+for sp in site.getsitepackages():
+    nvidia_path = os.path.join(sp, 'nvidia')
+    if os.path.exists(nvidia_path):
+        for subdir in os.listdir(nvidia_path):
+            bin_path = os.path.join(nvidia_path, subdir, 'bin')
+            if os.path.exists(bin_path):
+                try:
+                    os.add_dll_directory(bin_path)
+                except:
+                    pass
+                os.environ['PATH'] = bin_path + os.pathsep + os.environ.get('PATH', '')
+
 from dotenv import load_dotenv
 import logging
 import threading
@@ -29,7 +44,6 @@ BASE_FOLDER = os.path.abspath(os.path.dirname(__file__))
 LOG_FOLDER = os.path.join(BASE_FOLDER, "logs")
 DEFAULT_LOG_FILE = os.path.join(LOG_FOLDER, 'bot_universal.log')
 
-
 def get_logger(module_name, filename=None):
     logger = logging.getLogger(module_name)
     if not logger.handlers:
@@ -41,9 +55,7 @@ def get_logger(module_name, filename=None):
         logger.setLevel(LOG_LEVEL)
     return logger
 
-
 def log_exception(logger, custom_message=None):
-    import sys
     import traceback
     exc_type, exc_value, exc_tb = sys.exc_info()
     exception_details = "".join(traceback.format_exception(exc_type, exc_value, exc_tb))
@@ -52,9 +64,7 @@ def log_exception(logger, custom_message=None):
     else:
         logger.warning(f"Exception occurred:\n{exception_details}")
 
-
 logger = get_logger(__name__)
-
 
 #### === Carpetas de organización === ####
 CAPTCHA_FOLDER = os.path.join(BASE_FOLDER, "captchas")
@@ -62,21 +72,17 @@ EVIDENCE_FOLDER = os.path.join(BASE_FOLDER, "screenshots")
 for folder in [LOG_FOLDER, CAPTCHA_FOLDER, EVIDENCE_FOLDER]:
     os.makedirs(folder, exist_ok=True)
 
-
 #### === Importa tu mapping de grupos === ####
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from diccionario import WEBSITES, CAPTCHA_GRUPOS, obtener_grupo
-
 
 #### === Timestamp helper === ####
 def get_current_timestamp():
     """Devuelve timestamp actual en formato 'YYYY-MM-DD HH:MM:SS'"""
     return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-
 #### === Auto-detección del website y tracking de captchas === ####
 _captcha_data = {}  # {website_name: {'path': str, 'solution': str}}
-
 
 def _detectar_website_desde_caller():
     """
@@ -99,7 +105,6 @@ def _detectar_website_desde_caller():
         logger.warning(f"[CAPTCHA] Error en auto-detección de website: {e}")
         return None
 
-
 def get_captcha_folder_for_website(website_name):
     """
     Crea y retorna la carpeta específica para captchas de un website.
@@ -108,7 +113,6 @@ def get_captcha_folder_for_website(website_name):
     website_captcha_folder = os.path.join(CAPTCHA_FOLDER, folder_name)
     os.makedirs(website_captcha_folder, exist_ok=True)
     return website_captcha_folder
-
 
 def _registrar_captcha(website_name, captcha_path, solucion):
     """Registra internamente el captcha resuelto para renombrado posterior"""
@@ -120,13 +124,12 @@ def _registrar_captcha(website_name, captcha_path, solucion):
         }
         logger.info(f"[CAPTCHA-TRACK] Registrado captcha para {website_name}: {solucion}")
 
-
 def _renombrar_captcha_automatico(website_name):
     """Renombra automáticamente el captcha cuando se registra un balance exitoso"""
     global _captcha_data
     
     if website_name not in _captcha_data:
-        return  # No hay captcha pendiente
+        return
     
     data = _captcha_data[website_name]
     old_path = data['path']
@@ -141,11 +144,9 @@ def _renombrar_captcha_automatico(website_name):
         directorio = os.path.dirname(old_path)
         extension = os.path.splitext(old_path)[1]
         
-        # Nombre = solo la solución del captcha
         nuevo_nombre = f"{solucion}{extension}"
         new_path = os.path.join(directorio, nuevo_nombre)
         
-        # Si ya existe, agregar contador secuencial
         contador = 1
         while os.path.exists(new_path):
             nuevo_nombre = f"{solucion}_{contador}{extension}"
@@ -155,13 +156,11 @@ def _renombrar_captcha_automatico(website_name):
         os.rename(old_path, new_path)
         logger.info(f"[CAPTCHA-RENAME] ✓ Renombrado: {os.path.basename(old_path)} → {nuevo_nombre}")
         
-        # Limpiar tracking
         del _captcha_data[website_name]
         
     except Exception as e:
         logger.error(f"[CAPTCHA-RENAME] Error al renombrar captcha: {e}")
         log_exception(logger, "Error en _renombrar_captcha_automatico")
-
 
 def detectar_grupo_captcha(website_name):
     """
@@ -173,22 +172,18 @@ def detectar_grupo_captcha(website_name):
     if not website_name:
         return None
     
-    # Buscar en cada grupo
     for grupo_id, websites in CAPTCHA_GRUPOS.items():
         if website_name in websites:
             logger.info(f"[CAPTCHA-DETECT] {website_name} → {grupo_id}")
             return grupo_id
     
-    # No encontrado en ningún grupo
     logger.info(f"[CAPTCHA-DETECT] {website_name} → 2captcha (no en grupos)")
     return None
 
-
 #### === Opciones Chrome/Bots === ####
-CHROME_HEADLESS = False
+CHROME_HEADLESS = True
 CHROME_WINDOW_SIZE = (900, 1300)
 CHROME_LANG = "en-US"
-
 
 def get_chrome_driver():
     options = webdriver.ChromeOptions()
@@ -200,62 +195,50 @@ def get_chrome_driver():
     driver.set_window_size(*CHROME_WINDOW_SIZE)
     return driver
 
-
 #### === Captcha config === ####
 API_KEY_2CAPTCHA = os.getenv('API_KEY_2CAPTCHA')
 KERAS_PREDICT_TIMEOUT = int(os.getenv('KERAS_PREDICT_TIMEOUT', '10'))
 
-# ✅ CONFIGURACIÓN ACTUALIZADA CON LOS MODELOS V3
+# ✅ MODELOS ACTUALIZADOS A .h5 (TensorFlow 2.10)
 CAPTCHA_CONFIG = {
     "grupo1": {
-        "model_path": os.path.join(os.path.dirname(BASE_FOLDER), "captchaModel", "models", "captcha_grupo1_v2_pred.keras"),
+        "model_path": os.path.join(os.path.dirname(BASE_FOLDER), "captchaModel", "models", "captcha_grupo1_v1_pred.h5"),
         "img_width": 200,
         "img_height": 50,
         "max_length": 5,
         "characters": "0123456789"
     },
     "grupo2": {
-        "model_path": os.path.join(os.path.dirname(BASE_FOLDER), "captchaModel", "models", "captcha_grupo2_v4_progressive_pred.keras"),
+        "model_path": os.path.join(os.path.dirname(BASE_FOLDER), "captchaModel", "models", "captcha_grupo2_v1_pred.h5"),
         "img_width": 200,
         "img_height": 60,
         "max_length": 4,
         "characters": "0123456789"
     },
     "grupo3": {
-        # ✅ MODELO V3 PROGRESSIVE (95-96% accuracy)
-        "model_path": os.path.join(os.path.dirname(BASE_FOLDER), "captchaModel", "models", "captcha_grupo3_v4_progressive_pred.keras"),
+        "model_path": os.path.join(os.path.dirname(BASE_FOLDER), "captchaModel", "models", "captcha_grupo3_v1_pred.h5"),
         "img_width": 200,
-        "img_height": 60,  # ✅ Grupo 3 usa 60px de altura
-        "max_length": 4,    # ✅ Grupo 3 usa 4 dígitos
+        "img_height": 60,
+        "max_length": 4,
         "characters": "0123456789"
     }
 }
 
-# ✅ CONFIGURACIÓN DE REINTENTOS POR GRUPO
 CAPTCHA_MAX_RETRIES = {
     "grupo1": 3,
     "grupo2": 3,
-    "grupo3": 2  # Grupo 3 tiene mejor accuracy, menos reintentos necesarios
+    "grupo3": 2
 }
-
 
 # Diccionario para almacenar modelos cargados
 keras_models = {}
 
-
 def cargar_modelo_keras(grupo_id):
     """
     Carga el modelo Keras para un grupo específico.
-    
-    Args:
-        grupo_id: 'grupo1', 'grupo2', o 'grupo3'
-    
-    Returns:
-        dict: {'model': model_keras, 'num_to_char': dict} o None si falla
     """
     global keras_models
     
-    # Si ya está cargado, retornarlo
     if grupo_id in keras_models:
         return keras_models[grupo_id]
     
@@ -287,7 +270,6 @@ def cargar_modelo_keras(grupo_id):
         }
         
         logger.info(f"[CAPTCHA-KERAS] ✅ Modelo {grupo_id} cargado exitosamente")
-        logger.info(f"[CAPTCHA-KERAS]    Config: {config_grupo['img_width']}x{config_grupo['img_height']}, max_length={config_grupo['max_length']}")
         
         return keras_models[grupo_id]
         
@@ -295,7 +277,6 @@ def cargar_modelo_keras(grupo_id):
         logger.error(f"[CAPTCHA-KERAS] ❌ Error al cargar modelo {grupo_id}")
         log_exception(logger, f"Error al cargar modelo Keras {grupo_id}")
         return None
-
 
 # Cargar modelos al inicio
 logger.info("="*70)
@@ -308,41 +289,27 @@ for grupo in ["grupo1", "grupo2", "grupo3"]:
         logger.warning(f"   ⚠️  {grupo} no disponible")
 logger.info("="*70)
 
-
 def preprocesar_captcha(pil_img):
-    """
-    Preprocesa la imagen del captcha para mejorar OCR.
-    Devuelve imagen en escala de grises.
-    """
+    """Preprocesa la imagen del captcha para mejorar OCR."""
     try:
-        # Convertir a escala de grises
         if pil_img.mode != 'L':
             pil_img = pil_img.convert('L')
         
-        # Convertir a numpy array
         img_array = np.array(pil_img)
-        
-        # Aplicar umbralización adaptativa para mejorar contraste
         img_thresh = cv2.adaptiveThreshold(
             img_array, 255, 
             cv2.ADAPTIVE_THRESH_GAUSSIAN_C, 
             cv2.THRESH_BINARY, 11, 2
         )
-        
-        # Aplicar filtro de mediana para reducir ruido
         img_filtered = cv2.medianBlur(img_thresh, 3)
         
-        # Convertir de vuelta a PIL
         return Image.fromarray(img_filtered)
     except Exception as e:
         logger.warning(f"[CAPTCHA-PREPROC] Error en preprocesamiento, usando original: {e}")
         return pil_img
 
-
 def decode_keras_prediction(pred, num_to_char_dict, max_length):
-    """
-    Decodifica la predicción del modelo Keras usando CTC decode.
-    """
+    """Decodifica la predicción del modelo Keras usando CTC decode."""
     try:
         import tensorflow as tf
         
@@ -356,7 +323,6 @@ def decode_keras_prediction(pred, num_to_char_dict, max_length):
         output_text = []
         for res in results:
             indices = res.numpy()
-            # Filtrar índices válidos
             text = ''.join([
                 num_to_char_dict[idx] 
                 for idx in indices 
@@ -370,12 +336,8 @@ def decode_keras_prediction(pred, num_to_char_dict, max_length):
         log_exception(logger, "Error en decodificación Keras")
         return ""
 
-
 def calcular_confianza_prediccion(pred):
-    """
-    Calcula el score de confianza de una predicción.
-    Retorna el promedio de las probabilidades máximas.
-    """
+    """Calcula el score de confianza de una predicción."""
     try:
         max_probs = np.max(pred[0], axis=1)
         confidence = np.mean(max_probs)
@@ -385,10 +347,7 @@ def calcular_confianza_prediccion(pred):
         return 0.0
 
 def predict_with_timeout(model, img_array, timeout=KERAS_PREDICT_TIMEOUT):
-    """
-    Ejecuta model.predict() con timeout.
-    Retorna (prediction, success) donde success=False si hay timeout.
-    """
+    """Ejecuta model.predict() con timeout."""
     result_queue = Queue()
     exception_queue = Queue()
     
@@ -421,7 +380,6 @@ def resolver_captcha_keras_interno(image_bytes, grupo_id, captcha_path):
     """
     Resuelve captcha usando el modelo Keras del grupo especificado.
     Retorna (text, confidence, timeout_occurred)
-    - timeout_occurred=True indica que debe reintentar sin contar como intento fallido
     """
     try:
         model_data = cargar_modelo_keras(grupo_id)
@@ -442,12 +400,11 @@ def resolver_captcha_keras_interno(image_bytes, grupo_id, captcha_path):
         img_array = np.transpose(img_array, (1, 0, 2))
         img_array = np.expand_dims(img_array, 0)
         
-        # ✅ PREDICCIÓN CON TIMEOUT
         prediction, success = predict_with_timeout(model, img_array, timeout=KERAS_PREDICT_TIMEOUT)
         
         if not success:
             logger.warning(f"[CAPTCHA-KERAS-{grupo_id.upper()}] ⏱️ Timeout - se reintentará")
-            return None, 0.0, True  # ← timeout_occurred=True
+            return None, 0.0, True
         
         confidence = calcular_confianza_prediccion(prediction)
         text = decode_keras_prediction(prediction, num_to_char, config_grupo['max_length'])
@@ -470,11 +427,8 @@ def resolver_captcha_keras_interno(image_bytes, grupo_id, captcha_path):
         log_exception(logger, f"Error en resolver_captcha_keras_interno {grupo_id}")
         return None, 0.0, False
 
-
 def resolver_captcha_2captcha_api(image_bytes, captcha_path, website_name):
-    """
-    Resuelve captcha usando servicio 2captcha.
-    """
+    """Resuelve captcha usando servicio 2captcha."""
     try:
         logger.info(f"[CAPTCHA-2CAPTCHA] Enviando captcha a 2captcha...")
         
@@ -491,7 +445,6 @@ def resolver_captcha_2captcha_api(image_bytes, captcha_path, website_name):
         
         logger.info(f"[CAPTCHA-2CAPTCHA] ID recibido: {captcha_id}")
         
-        # Esperar resolución
         for intent in range(18):
             time.sleep(2)
             res = requests.get(
@@ -502,7 +455,6 @@ def resolver_captcha_2captcha_api(image_bytes, captcha_path, website_name):
             if res['status'] == 1:
                 result = res['request']
                 logger.info(f"[CAPTCHA-2CAPTCHA] ✅ Resultado: {result}")
-                # Registrar para renombrado
                 _registrar_captcha(website_name, captcha_path, result)
                 return result
             
@@ -517,23 +469,9 @@ def resolver_captcha_2captcha_api(image_bytes, captcha_path, website_name):
         log_exception(logger, "Error en resolver_captcha_2captcha_api")
         return None
 
-
 def resolver_captcha_2captcha(image_bytes, filename_prefix='captcha'):
     """
     Función unificada para resolver captchas.
-    
-    ✅ LÓGICA ACTUALIZADA:
-    1. Detecta grupo del website automáticamente
-    2. Si tiene grupo asignado: Usa modelo Keras con reintentos (3 intentos)
-    3. Si NO tiene grupo asignado: Usa 2captcha directamente
-    4. Si modelo falla tras reintentos: Fallback a 2captcha
-    
-    Args:
-        image_bytes: Bytes de la imagen del captcha
-        filename_prefix: Prefijo para el nombre del archivo
-    
-    Returns:
-        str: Texto del captcha resuelto o None si falla
     """
     website_name = _detectar_website_desde_caller()
     ts = int(time.time())
@@ -545,7 +483,6 @@ def resolver_captcha_2captcha(image_bytes, filename_prefix='captcha'):
     
     captcha_path = os.path.join(captcha_folder, f"{filename_prefix}_{ts}.png")
     
-    # Guardar imagen
     try:
         with open(captcha_path, "wb") as f:
             f.write(image_bytes)
@@ -554,15 +491,12 @@ def resolver_captcha_2captcha(image_bytes, filename_prefix='captcha'):
         logger.error(f"[CAPTCHA] ❌ Error guardando imagen: {e}")
         return None
     
-    # Detectar qué grupo de captcha usar
     grupo_id = detectar_grupo_captcha(website_name)
     
-    # ===== CASO 1: Website SIN grupo asignado → 2captcha directo =====
     if grupo_id is None:
         logger.info(f"[CAPTCHA] 🌐 Website '{website_name}' sin grupo → Usando 2captcha directamente")
         return resolver_captcha_2captcha_api(image_bytes, captcha_path, website_name)
     
-    # ===== CASO 2: Website CON grupo asignado → Modelo Keras con reintentos =====
     logger.info(f"[CAPTCHA] 🤖 Website '{website_name}' → Grupo {grupo_id}")
     
     max_retries = CAPTCHA_MAX_RETRIES.get(grupo_id, 3)
@@ -570,33 +504,27 @@ def resolver_captcha_2captcha(image_bytes, filename_prefix='captcha'):
     for intento in range(1, max_retries + 1):
         logger.info(f"[CAPTCHA] Intento {intento}/{max_retries} con modelo {grupo_id}")
         
-        # ✅ CORREGIDO: desempaquetar 3 valores en lugar de 2
         result, confidence, timeout_occurred = resolver_captcha_keras_interno(image_bytes, grupo_id, captcha_path)
         
-        # Si hubo timeout en la predicción, reintentar sin contar como intento fallido
         if timeout_occurred:
             logger.warning(f"[CAPTCHA] ⏱️ Timeout en predicción Keras - reintentando sin penalizar...")
             time.sleep(1)
-            continue  # No incrementa el contador de intentos realmente
+            continue
         
         if result:
             logger.info(f"[CAPTCHA] ✅ Captcha resuelto con {grupo_id} en intento {intento}: '{result}' (confianza: {confidence:.3f})")
-            # Registrar para renombrado automático
             _registrar_captcha(website_name, captcha_path, result)
             return result
         else:
             logger.warning(f"[CAPTCHA] ⚠️ Intento {intento} falló (confianza: {confidence:.3f})")
             
-            # Si no es el último intento, esperar un poco antes de reintentar
             if intento < max_retries:
                 time.sleep(0.5)
     
-    # ===== CASO 3: Todos los reintentos fallaron → Fallback a 2captcha =====
     logger.warning(f"[CAPTCHA] ⚠️ Modelo {grupo_id} falló tras {max_retries} intentos → Fallback a 2captcha")
     return resolver_captcha_2captcha_api(image_bytes, captcha_path, website_name)
 
-
-#### === Evidencias (screenshots) === ####
+#### === Evidencias === ####
 def guardar_evidencia(screenshot_bytes, filename_prefix="evidence"):
     ts = int(time.time())
     screenshot_path = os.path.join(EVIDENCE_FOLDER, f"{filename_prefix}_{ts}.png")
@@ -604,13 +532,11 @@ def guardar_evidencia(screenshot_bytes, filename_prefix="evidence"):
         f.write(screenshot_bytes)
     return screenshot_path
 
-
 #### === Google Sheets === ####
 SERVICE_ACCOUNT_FILE = os.getenv('SERVICE_ACCOUNT_FILE', '../credentials/googleKeys.json')
 SPREADSHEET_NAME = os.getenv('SPREADSHEET_NAME', 'BALANCES')
 SHEET_TAB = os.getenv('SHEET_TAB', 'Balances')
 EXPORT_MODE = os.getenv('EXPORT_MODE', 'MONGO')
-
 
 def google_sheets_connect():
     scopes = [
@@ -622,45 +548,32 @@ def google_sheets_connect():
     sheet = client.open(SPREADSHEET_NAME).worksheet(SHEET_TAB)
     return sheet
 
-
 #### === MySQL Config === ####
 MYSQL_HOST = os.getenv('MYSQL_HOST', 'localhost')
 MYSQL_USER = os.getenv('MYSQL_USER', 'root')
 MYSQL_PASSWORD = os.getenv('MYSQL_PASSWORD')
 MYSQL_DATABASE = os.getenv('MYSQL_DATABASE', 'plataforma_finanzas')
 
-
 #### === Configuración MongoDB === ####
 MONGO_URI = os.getenv('MONGO_URI')
 MONGO_DB = os.getenv('MONGO_DB', 'plataforma_finanzas')
 MONGO_COLLECTION = os.getenv('MONGO_COLLECTION', 'balances_bot')
 
-
 def enviar_resultado_balance(sheet, website, username, fecha=None, balance=None):
-    """
-    Registra un balance en MongoDB.
-    El grupo se obtiene automáticamente desde diccionario.py
-    """
+    """Registra un balance en MongoDB."""
     if fecha is None:
         fecha = get_current_timestamp()
     
-    # ✅ Obtener grupo desde diccionario.py (NO desde MongoDB)
     grupo = obtener_grupo(username, website)
-    
-    # ✅ NORMALIZAR a Title Case
     website_normalized = website.strip().title()
     
-    # Renombrar captcha si existe
     _renombrar_captcha_automatico(website)
     
     if EXPORT_MODE.upper() == "SHEET":
-        # Implementación sheets (si la necesitas)
         pass
     elif EXPORT_MODE.upper() == "MYSQL":
-        # Implementación MySQL (si la necesitas)
         pass
     else:
-        # MODO MONGO (predeterminado)
         client = None
         try:
             client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=20000)
@@ -673,7 +586,7 @@ def enviar_resultado_balance(sheet, website, username, fecha=None, balance=None)
                 "fecha": fecha,
                 "balance": balance,
                 "used_as_previous": False,
-                "grupo": grupo  # ← Viene de diccionario.py, no de MongoDB
+                "grupo": grupo
             }
             
             collection.insert_one(doc)
@@ -688,4 +601,3 @@ def enviar_resultado_balance(sheet, website, username, fecha=None, balance=None)
                     client.close()
                 except Exception:
                     pass
-
