@@ -5,7 +5,7 @@ import os
 GROUP_SCRIPTS = [
     "run_group1.py",
     "run_group2.py",
-    # "run_group3.py",
+    "run_group3.py",
     "run_group4.py",
 ]
 
