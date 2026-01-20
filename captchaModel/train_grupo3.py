@@ -34,13 +34,13 @@ from sklearn.model_selection import train_test_split
 import cv2
 
 # ==================== CONFIG ====================
-CAPTCHA_NAME = "grupo3_v1"
-DATASET_PATH = "./captcha_datasets/grupo3/"
+CAPTCHA_NAME = "grupo3_v2_62px"
+DATASET_PATH = "./captcha_datasets/grupo3_200x62/"
 
 BASE_PRED_MODEL_PATH = ""
 
 IMG_WIDTH = 200
-IMG_HEIGHT = 60
+IMG_HEIGHT = 62
 MAX_LENGTH = 4
 CHARACTERS = "0123456789"
 
