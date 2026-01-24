@@ -13,7 +13,7 @@ scripts = [
     'highstakesBalance.py', # Sí Captcha
     'mrallinoneBalance.py', # Sí Captcha
     'siriusBalance.py', # Sí Captcha
-    'easystreetBalance.py', # Sí Captcha
+    # 'easystreetBalance.py', # Sí Captcha
     'vegasrollBalance.py', # Sí Captcha
     'moolahBalance.py', # Sí Captcha
     'lootBalance.py', # Sí Captcha

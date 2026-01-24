@@ -54,6 +54,8 @@ companies = {
     "Lucky Shamrock": "695e917e3ea56ac974bfc4ec",
     "Paper Route": "695e8e0c3ea56ac974bfbe9f",
     "Crazy Coins": "69617010acfc5906d0c6f66e",
+    "Dragons Den": "696e516bacfc5906d0e6f697",
+    "Club Vpower": "696e5610acfc5906d0e703f3",
 }
 
 SUPERADMIN_USER = os.getenv('SUPERADMIN_USER')

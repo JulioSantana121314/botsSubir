@@ -41,23 +41,43 @@ def login(driver, usuario, password, second_password):
         EC.visibility_of_element_located((By.CSS_SELECTOR, ".navbar .left-menu"))
     )
 
-def extraer_balance(driver):
-    for _ in range(10):
+def extraer_balance(driver, logger):
+    """
+    Extrae balance del texto 'My Score: X,XXX.XX' o 'My Score: XXX.XX'
+    ✅ Maneja balances con y sin comas
+    """
+    for intento in range(10):
         try:
             tag = driver.find_element(By.XPATH, "//span[contains(text(),'My Score:')]")
             txt = tag.text.strip()
-            match = re.search(r"([0-9]+\.[0-9]{2})", txt)
+            
+            # ✅ Regex flexible: soporta con y sin comas
+            match = re.search(r"[\d,]+\.?\d*", txt)
+            
             if match:
-                balance = float(match.group(1))
-                logger.info(f"Balance extraído: {balance}")
-                print(f"Balance: {balance}")
+                # Remover comas y convertir a float
+                balance_str = match.group().replace(',', '')
+                balance = float(balance_str)
+                
+                if config.VERBOSE_LOGGING:
+                    logger.debug(f"[EXTRACT] Texto: '{txt}' → Balance: {balance}")
+                
                 return balance
-        except Exception:
-            pass
+            else:
+                if config.VERBOSE_LOGGING:
+                    logger.warning(f"[EXTRACT] No se encontró número en: '{txt}'")
+                
+        except Exception as e:
+            if config.VERBOSE_LOGGING and intento == 0:
+                logger.debug(f"[EXTRACT] Intento {intento + 1}/10 - Elemento no encontrado")
+        
         time.sleep(1)
+    
+    # Si falla tras 10 intentos
     config.guardar_evidencia(driver.get_screenshot_as_png(), "100plus_no_balance")
-    logger.warning("No se encontró el balance tras esperar. Ver evidencia en carpeta /screenshots")
+    logger.error("[EXTRACT] No se encontró balance tras 10 intentos")
     return None
+
 
 def hacer_logout(driver):
     try:
@@ -118,7 +138,7 @@ def main():
                 logger.warning(f"No se pudo iniciar sesión después de {MAX_LOGIN_RETRIES} intentos para {cuenta['usuario']}")
                 continue
 
-            balance = extraer_balance(driver)
+            balance = extraer_balance(driver, logger)
             hora_login = config.get_current_timestamp()
             if balance is not None:
                 config.enviar_resultado_balance(sheet, WEBSITE_NAME, cuenta["usuario"], hora_login, balance)

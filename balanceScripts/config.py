@@ -56,21 +56,38 @@ VERBOSE_LOGGING = False
 def get_logger(module_name, filename=None):
     """
     Crea logger con configuración optimizada.
-    ✅ Solo muestra eventos importantes por defecto.
+    ✅ Logs separados por website automáticamente
+    
+    Args:
+        module_name: Nombre del módulo (ej: "MILKY WAY_bot", "ORION STARS_bot")
+        filename: Ruta completa del archivo de log (opcional)
     """
     logger = logging.getLogger(module_name)
-    if not logger.handlers:
-        log_file = filename or DEFAULT_LOG_FILE
-        handler = logging.FileHandler(log_file, encoding='utf-8')
-        formatter = logging.Formatter(LOG_FORMAT)
-        handler.setFormatter(formatter)
-        logger.addHandler(handler)
-        
-        console_handler = logging.StreamHandler(sys.stdout)
-        console_handler.setFormatter(formatter)
-        logger.addHandler(console_handler)
-        
-        logger.setLevel(LOG_LEVEL)
+    
+    # ✅ Evitar duplicar handlers si ya existe
+    if logger.handlers:
+        return logger
+    
+    # ✅ Si no se especifica filename, crear uno basado en module_name
+    if filename is None:
+        # Extraer nombre limpio del website (remover "_bot" si existe)
+        website_name = module_name.replace("_bot", "").replace(" ", "_")
+        filename = os.path.join(LOG_FOLDER, f"{website_name}.log")
+    
+    # File handler (archivo de log específico)
+    file_handler = logging.FileHandler(filename, encoding='utf-8')
+    file_formatter = logging.Formatter(LOG_FORMAT)
+    file_handler.setFormatter(file_formatter)
+    logger.addHandler(file_handler)
+    
+    # Console handler (sigue mostrando en consola)
+    console_handler = logging.StreamHandler(sys.stdout)
+    console_formatter = logging.Formatter(LOG_FORMAT)
+    console_handler.setFormatter(console_formatter)
+    logger.addHandler(console_handler)
+    
+    logger.setLevel(LOG_LEVEL)
+    
     return logger
 
 
@@ -246,7 +263,7 @@ def get_chrome_driver():
     try:
         driver = webdriver.Chrome(options=options)
         driver.set_page_load_timeout(60)
-        driver.implicitly_wait(10)
+        driver.implicitly_wait(2)
         driver.set_window_size(*CHROME_WINDOW_SIZE)
         return driver
     except Exception as e:

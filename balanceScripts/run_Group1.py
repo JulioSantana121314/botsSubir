@@ -10,13 +10,13 @@ scripts = [
     'gamevaultBalance.py', # Sí Captcha
     'pandamasterBalance.py', # Sí Captcha
     'juwaBalance.py', # Sí Captcha
-    'kingofpopBalance.py', # Sí Captcha
+    # 'kingofpopBalance.py', # Sí Captcha
     'firekirinBalance.py', # Sí Captcha
     'nobleBalance.py', # Sí Captcha
     'winstarBalance.py', # Sí Captcha
     'milkywayBalance.py', # Sí Captcha
     'cashmachineBalance.py', # Sí Captcha
-    # 'galaxyworldBalance.py', # Sí Captcha
+    'galaxyworldBalance.py', # Sí Captcha
     'luckystarsBalance.py', # Sí Captcha
     'mafiaBalance.py', # Sí Captcha
     'gameroomBalance.py', # Sí Captcha

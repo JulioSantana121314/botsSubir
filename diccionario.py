@@ -181,7 +181,7 @@ WEBSITES = {
         "accounts": [
             {"usuario": "perubot", "password": "Lima123!@#", "grupo": "PPP"},
             {"usuario": "Autostore", "password": "Auto1989!@#", "grupo": "Wise Gang"},
-            {"usuario": "AmandaP_BOT", "password": "Focus999@@159", "grupo": "Ballerz"},
+            {"usuario": "Amandap01_bot", "password": "Winner789!", "grupo": "Ballerz"},
             # {"usuario": "slapitgames", "password": "Sl4piTG@m3z"},
             # {"usuario": "kcheung", "password": "OaKcR3ekD4v!"},
             {"usuario": "whatever", "password": "Mkingdom7", "grupo": "Mushroom Kingdom"},
@@ -205,7 +205,7 @@ WEBSITES = {
         "url": "https://agent.galaxyworld999.com/login",
         "accounts": [
             {"usuario": "automated", "password": "Auto1989!@", "grupo": "Wise Gang"},
-            {"usuario": "bworldweb007", "password": "Agent@884", "grupo": "Ballerz"},
+            # {"usuario": "bworldweb007", "password": "Agent@884", "grupo": "Ballerz"},
             {"usuario": "ReggiesProducts01", "password": "Winning5392", "grupo": "Players Club"},
         ],
     },
@@ -327,7 +327,7 @@ WEBSITES = {
     "100 PLUS": {
         "url": "https://888.100plus.me",
         "accounts": [
-            {"usuario": "USNBGamesBot001", "password": "Focus100123", "password2": "131854", "grupo": "Wise Gang"},
+            {"usuario": "USAutoside26", "password": "Auto1989", "password2": "198989", "grupo": "Wise Gang"},
         ],
     },
     "CASH FRENZY": {
@@ -379,7 +379,7 @@ WEBSITES = {
     "JACKPOT FRENZY": {
         "url": "https://admin.spinfindo.com/#/login",
         "accounts": [
-            {"usuario": "Crystal", "password": "Focus100@", "grupo": "Wise Gang"},
+            {"usuario": "NBGamesBot01", "password": "Auto1989!@", "grupo": "Wise Gang"},
         ],
     },
     "JOKER": {
@@ -424,7 +424,7 @@ WEBSITES = {
     "RIVER MONSTER": {
         "url": "https://www.rm-pay.com:8888/",
         "accounts": [
-            {"usuario": "NEWBGamesC", "password": "Focus100_123", "grupo": "Wise Gang"},
+            {"usuario": "Autoside", "password": "Auto1989", "grupo": "Wise Gang"},
         ],
     },
     "SIRIUS": {
@@ -480,7 +480,7 @@ WEBSITES = {
 # Grupos definidos con sus compañías
 GRUPOS_COMPANIAS = {
     "Wysaro": [
-        "Lucky Duck Lounge", "Simply Unmatched", "Lucky Shamrock", "Paper Route", "Crazy Coins",
+        "Lucky Duck Lounge", "Simply Unmatched", "Lucky Shamrock", "Paper Route", "Crazy Coins", "Dragons Den", "Club Vpower",
     ],
     "Tierlock": [
         "The Fun Room", "Slots Gone Wild", "JJsreelsadventures", "Lucky Luxe", "Snarcade", "Lucky Buddy", "Devine Slots", "BordersWay", "The Players Lounge",
@@ -554,7 +554,7 @@ CAPTCHA_GRUPOS = {
         "Win Star",
     ],
     "grupo3": [
-        # "GALAXY WORLD",
+        "GALAXY WORLD",
         "GAME VAULT",
         "HIGHSTAKES",
         "JUWA",
