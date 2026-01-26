@@ -55,7 +55,7 @@ WEBSITES = {
             # {"usuario": "kobe", "password": "OaKcR3ekD4ve!!"},
             {"usuario": "whatever", "password": "Mkingdom7@@", "grupo": "Mushroom Kingdom"},
             {"usuario": "OceanSluggerz01_Cashier", "password": "Focus987_6152", "grupo": "Ocean Sluggerz"},
-            {"usuario": " IluckyroomFK", "password": "k3wMBwN6"},
+            {"usuario": " IluckyroomFK", "password": "k3wMBwN6", "grupo" : "Lucky Room"},
             # {"usuario": "a5games", "password": "!Hailey_8800_!"},
             {"usuario": "ReggiesProducts_Cashier", "password": "Winning6543", "grupo": "Players Club"},
             {"usuario": "CashierTDCRB1", "password": "DVASBFU_81236871250", "grupo": "Tierlock"},
@@ -98,7 +98,7 @@ WEBSITES = {
     "VBLINK": {
         "url": "https://gm.vblink777.club/#/login?redirect=%2Findex",
         "accounts": [
-            {"usuario": "atencionpre1", "password": "PPPE@$123456"},
+            {"usuario": "atencionpre1", "password": "PPPE@$123456", "grupo" : "PPP"},
             {"usuario": "Autostore", "password": "Auto1989!@", "grupo": "Wise Gang"},
             {"usuario": "WebsiteCashier", "password": "Winning@7777", "grupo": "Ballerz"},
             # {"usuario": "slapitnow", "password": "$l@p$l@p8#8"},
@@ -118,7 +118,7 @@ WEBSITES = {
     "ULTRA PANDA": {
         "url": "https://ht.ultrapanda.mobi/#/login",
         "accounts": [
-            {"usuario": "atencionpre", "password": "PPPE@$123456"},
+            {"usuario": "atencionpre", "password": "PPPE@$123456", "grupo" : "PPP"},
             {"usuario": "Automatedside", "password": "Auto1989!@", "grupo": "Wise Gang"},
             {"usuario": "WebsiteBOT", "password": "Winning@7777", "grupo": "Ballerz"},
             # {"usuario": "slapitnow", "password": "$l@p$l@p8#8"},
